@@ -1,0 +1,211 @@
+// _sass/_typography.scss
+// Três vozes contrastantes: display monumental, mono técnico, meta label
+
+// ─── GOOGLE FONTS — importar no layout ───────────────────────────────────────
+// <link> em _includes/head.html
+
+// ─── HIERARQUIA TIPOGRÁFICA ──────────────────────────────────────────────────
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 0.95;
+  color: var(--text);
+}
+
+h1 {
+  font-size: $type-h1;
+}
+
+h2 {
+  font-size: $type-h2;
+  line-height: 1.0;
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-size: $type-h3;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+h4 {
+  font-family: var(--font-mono);
+  font-size: $type-meta;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+  margin-bottom: 8px;
+}
+
+p {
+  font-family: var(--font-mono);
+  font-size: $type-body;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 1.2em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Texto longo justificado com hifenização
+.prose {
+  p {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+}
+
+// Meta label — voz 3
+.meta-label {
+  @include meta-label;
+}
+
+// Linha técnica de subtítulo
+.tech-subtitle {
+  font-family: var(--font-mono);
+  font-size: $type-meta;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+  margin-bottom: 8px;
+}
+
+// Links com sublinhado animado de ferrugem
+.link-animated {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--rust);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--trans-mid);
+  }
+
+  &:hover::after,
+  &:focus::after {
+    transform: scaleX(1);
+  }
+}
+
+// Texto principal — links animados por omissão
+main a:not(.btn):not(.card-link):not(.icon-link) {
+  @extend .link-animated;
+}
+
+// Numerais gigantes outline — secções
+.section-num {
+  font-family: var(--font-display);
+  font-size: $type-section-num;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--rust);
+  text-stroke: 1px var(--rust);
+  line-height: 0.8;
+  position: absolute;
+  left: -40px;
+  top: -20px;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.6;
+  z-index: 0;
+
+  // Animação de stroke ao entrar — definida em _animations.scss
+  &.animate-stroke {
+    // stroke-dasharray aplicado via JS
+  }
+}
+
+// Botões
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: $type-meta;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  transition:
+    background-color var(--trans-mid),
+    color var(--trans-mid),
+    transform var(--trans-fast),
+    border-color var(--trans-mid);
+
+  &:hover, &:focus {
+    background-color: var(--rust);
+    color: var(--bg);
+    border-color: var(--rust);
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+}
+
+// Etiquetas de área de investigação — como etiquetas de arquivo
+.research-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+  border: 1px solid var(--border);
+  padding: 5px 12px 5px 16px;
+  position: relative;
+  transition: color var(--trans-mid), border-color var(--trans-mid);
+
+  // Furo da etiqueta
+  &::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background var(--trans-mid);
+  }
+
+  &:hover, &:focus {
+    color: var(--text);
+    border-color: var(--rust);
+
+    &::before {
+      background: var(--rust);
+    }
+  }
+}

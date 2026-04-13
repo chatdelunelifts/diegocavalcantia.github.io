@@ -1,0 +1,95 @@
+{% assign t = site.data.translations[page.lang | default: site.lang | default: 'pt'] %}
+{% assign lang = page.lang | default: site.lang | default: 'pt' %}
+{% assign current_url = page.url %}
+
+<nav class="sidebar" id="sidebar" aria-label="Navegação principal" role="navigation">
+
+  <!-- Indicador de secção activa — desliza no trilho -->
+  <div class="nav-indicator" id="nav-indicator" aria-hidden="true"></div>
+
+  <!-- Monograma -->
+  <div class="sidebar-monogram">
+    <a href="{{ '/' | relative_url }}" aria-label="Diego Cavalcanti — Início">
+      <span class="monogram-dc" aria-hidden="true">DC</span>
+    </a>
+    <span class="monogram-name">Diego Cavalcanti</span>
+    <span class="monogram-role">Doutorando · NOVA FCT</span>
+  </div>
+
+  <!-- Navegação -->
+  <div class="sidebar-nav">
+    <ul class="nav-list" role="list">
+
+      {% assign nav_items = "" | split: "" %}
+      {% assign nav_items = nav_items | push: "home,/,01" %}
+      {% assign nav_items = nav_items | push: "about,/sobre/,02" %}
+      {% assign nav_items = nav_items | push: "books,/livros/,03" %}
+      {% assign nav_items = nav_items | push: "articles,/artigos/,04" %}
+      {% assign nav_items = nav_items | push: "chapters,/capitulos/,05" %}
+      {% assign nav_items = nav_items | push: "projects,/projectos/,06" %}
+      {% assign nav_items = nav_items | push: "teaching,/ensino/,07" %}
+      {% assign nav_items = nav_items | push: "cv,/cv/,08" %}
+      {% assign nav_items = nav_items | push: "contact,/contacto/,09" %}
+
+      {% for item in nav_items %}
+        {% assign parts = item | split: "," %}
+        {% assign key = parts[0] %}
+        {% assign path = parts[1] %}
+        {% assign num = parts[2] %}
+        {% assign is_active = false %}
+        {% if current_url == path or current_url contains path and path != "/" %}
+          {% assign is_active = true %}
+        {% elsif current_url == "/" and path == "/" %}
+          {% assign is_active = true %}
+        {% endif %}
+
+        <li class="nav-item{% if is_active %} active{% endif %}" data-nav="{{ key }}">
+          <a href="{{ path | relative_url }}"
+             {% if is_active %}aria-current="page"{% endif %}>
+            <span class="nav-num">{{ num }}</span>
+            {{ t.nav[key] }}
+          </a>
+        </li>
+      {% endfor %}
+
+    </ul>
+  </div>
+
+  <!-- Alternador PT/EN -->
+  <div class="lang-toggle" role="group" aria-label="Selecção de idioma">
+    <a href="{{ page.url }}" class="lang-btn{% if lang == 'pt' %} active{% endif %}"
+       lang="pt" aria-label="Português"
+       {% if lang == 'pt' %}aria-current="true"{% endif %}>PT</a>
+    <span class="lang-sep" aria-hidden="true">·</span>
+    <a href="{{ page.url }}" class="lang-btn{% if lang == 'en' %} active{% endif %}"
+       lang="en" aria-label="English"
+       {% if lang == 'en' %}aria-current="true"{% endif %}
+       data-lang-switch="en">EN</a>
+  </div>
+
+  <!-- Contactos na base -->
+  <div class="sidebar-contacts" role="list" aria-label="Perfis e contactos">
+    <a href="mailto:{{ site.author.email }}" class="contact-icon" role="listitem"
+       aria-label="Enviar email">
+      {% include icons/email.svg %}
+    </a>
+    <a href="{{ site.author.orcid }}" class="contact-icon" target="_blank" rel="noopener"
+       role="listitem" aria-label="Perfil ORCID (abre em nova janela)">
+      {% include icons/orcid.svg %}
+    </a>
+    <a href="{{ site.author.academia }}" class="contact-icon" target="_blank" rel="noopener"
+       role="listitem" aria-label="Perfil Academia.edu (abre em nova janela)">
+      {% include icons/academia.svg %}
+    </a>
+    <a href="{{ site.author.github }}" class="contact-icon" target="_blank" rel="noopener"
+       role="listitem" aria-label="Perfil GitHub (abre em nova janela)">
+      {% include icons/github.svg %}
+    </a>
+  </div>
+
+  <!-- Indicador de progresso de scroll -->
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-fill" id="scroll-fill"></div>
+  </div>
+
+</nav>

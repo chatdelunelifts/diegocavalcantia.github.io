@@ -1,0 +1,161 @@
+// _sass/_ornaments.scss
+// Elementos decorativos — carimbos, marcadores, divisores SVG
+
+// Carimbo verificado — aplicado como SVG inline
+.stamp-container {
+  position: relative;
+  display: inline-block;
+}
+
+// ─── ABOUT PAGE — FICHA DE IDENTIFICAÇÃO ─────────────────────────────────────
+.about-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+  align-items: start;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.id-card {
+  border: 1px solid var(--border);
+  padding: 24px;
+  position: relative;
+  @include corner-marks;
+
+  .card-corner-bl,
+  .card-corner-br {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+  }
+  .card-corner-bl {
+    bottom: -1px;
+    left: -1px;
+    border-bottom: 1px solid var(--rust);
+    border-left: 1px solid var(--rust);
+  }
+  .card-corner-br {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1px solid var(--rust);
+    border-right: 1px solid var(--rust);
+  }
+
+  .id-photo {
+    aspect-ratio: 1;
+    overflow: hidden;
+    margin-bottom: 24px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(80%);
+    }
+
+    // Marcadores de corte na foto
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      z-index: 2;
+    }
+
+    &::before {
+      top: 4px; left: 4px;
+      border-top: 1px solid var(--rust);
+      border-left: 1px solid var(--rust);
+    }
+
+    &::after {
+      bottom: 4px; right: 4px;
+      border-bottom: 1px solid var(--rust);
+      border-right: 1px solid var(--rust);
+    }
+  }
+
+  .id-field {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 4px 12px;
+    margin-bottom: 4px;
+
+    .id-key {
+      @include meta-label;
+      font-size: 9px;
+    }
+
+    .id-val {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text);
+    }
+  }
+
+  .id-separator {
+    border: none;
+    border-top: 1px dashed var(--border-inner);
+    margin: 16px 0;
+  }
+}
+
+// ─── TIMELINE DE FORMAÇÃO ────────────────────────────────────────────────────
+.education-timeline {
+  position: relative;
+  padding-left: 32px;
+
+  // Linha central
+  &::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 32px;
+
+  // Marcador circular
+  &::before {
+    content: '';
+    position: absolute;
+    left: -29px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--rust);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--rust);
+  }
+
+  .timeline-date {
+    @include meta-label;
+    margin-bottom: 4px;
+    color: var(--rust);
+  }
+
+  .timeline-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .timeline-institution {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-meta);
+  }
+}

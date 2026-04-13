@@ -1,0 +1,88 @@
+---
+layout: default
+---
+{% assign t = site.data.translations[page.lang | default: site.lang | default: 'pt'] %}
+
+<div class="page-inner">
+  {% include page-file-header.html slug=page.slug page_num=1 total=1 %}
+
+  <article class="pub-detail" aria-labelledby="proj-title">
+
+    <header class="pub-detail-header section-block reveal">
+      <div class="section-header">
+        <span class="section-num-display" aria-hidden="true">06</span>
+        <div>
+          <p class="tech-subtitle">
+            PROJECTO DE INVESTIGAÇÃO
+            {% if page.year_start %} · {{ page.year_start }}{% if page.year_end %}–{{ page.year_end }}{% else %}–PRES.{% endif %}{% endif %}
+          </p>
+          <h1 id="proj-title">{{ page.title }}</h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Meta do projecto -->
+    <div class="pub-meta-card reveal">
+      {% if page.pi %}
+      <div class="meta-row">
+        <span class="meta-key">{{ t.meta.pi }}</span>
+        <span class="meta-val">{{ page.pi }}</span>
+      </div>
+      {% endif %}
+      {% if page.funding %}
+      <div class="meta-row">
+        <span class="meta-key">{{ t.meta.funding }}</span>
+        <span class="meta-val">{{ page.funding }}</span>
+      </div>
+      {% endif %}
+      {% if page.institutions %}
+      <div class="meta-row">
+        <span class="meta-key">{{ t.meta.institutions }}</span>
+        <span class="meta-val">{{ page.institutions | join: ' · ' }}</span>
+      </div>
+      {% endif %}
+      {% if page.output %}
+      <div class="meta-row">
+        <span class="meta-key">{{ t.meta.output }}</span>
+        <span class="meta-val">{{ page.output }}</span>
+      </div>
+      {% endif %}
+      {% if page.status %}
+      <div class="meta-row">
+        <span class="meta-key">ESTADO</span>
+        <span class="meta-val">
+          <span class="status-badge status-{{ page.status }}">
+            {% if page.status == 'ongoing' %}{{ t.meta.status_ongoing }}
+            {% elsif page.status == 'completed' %}{{ t.meta.status_completed }}
+            {% elsif page.status == 'review' %}{{ t.meta.status_review }}
+            {% endif %}
+          </span>
+        </span>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if page.description or content != '' %}
+    <div class="section-block reveal">
+      <div class="divider-numbered" aria-hidden="true">
+        <span class="divider-label">DESCRIÇÃO DO PROJECTO</span>
+      </div>
+      <div class="prose">
+        {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+        {{ content }}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if page.tags %}
+    <div class="section-block reveal">
+      <nav class="research-tags" aria-label="Áreas temáticas">
+        {% for tag in page.tags %}
+        <span class="research-tag">{{ tag }}</span>
+        {% endfor %}
+      </nav>
+    </div>
+    {% endif %}
+
+  </article>
+</div>

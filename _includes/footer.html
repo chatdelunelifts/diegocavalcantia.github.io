@@ -1,0 +1,14 @@
+{% assign t = site.data.translations[page.lang | default: site.lang | default: 'pt'] %}
+{% assign year = site.time | date: '%Y' %}
+
+<footer class="site-footer" role="contentinfo">
+  <p class="footer-copy">
+    © {{ year }} Diego Cavalcanti · {{ t.footer.built_with }}
+  </p>
+
+  <div class="footer-actions">
+    <button class="cursor-toggle" id="cursor-toggle" aria-label="{{ t.footer.toggle_cursor }}">
+      {{ t.footer.toggle_cursor }}
+    </button>
+  </div>
+</footer>

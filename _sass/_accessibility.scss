@@ -1,0 +1,72 @@
+// _sass/_accessibility.scss
+// Acessibilidade — WCAG AA, focus rings, skip link, high contrast
+
+// ─── SKIP LINK ───────────────────────────────────────────────────────────────
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--rust);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  z-index: 10000;
+  transition: top var(--trans-fast);
+
+  &:focus {
+    top: 8px;
+  }
+}
+
+// ─── FOCUS RINGS — 2px ferrugem em todos os interactivos ─────────────────────
+:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 2px;
+}
+
+// Remover outline apenas quando não é focus-visible
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// ─── PREFERS-CONTRAST: MORE ──────────────────────────────────────────────────
+@media (prefers-contrast: more) {
+  :root {
+    --text:    #FFFFFF;
+    --text-meta: #CCCCCC;
+    --border:  #888888;
+    --rust:    #FF6633;
+  }
+
+  .pub-entry,
+  .pub-card,
+  .book-entry {
+    border-color: #888888;
+  }
+}
+
+// ─── ARIA ─────────────────────────────────────────────────────────────────────
+// Elementos com role=button e tabindex devem ter foco explícito
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 2px;
+}
+
+// Visually hidden (para screen readers)
+.visually-hidden,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -1,0 +1,40 @@
+<svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true" role="img">
+  <!-- Planta esquemática de uma quadra lisboeta
+       Rectângulos com pátios interiores — traço subtil -->
+  <g fill="none" stroke="#2A2A2A" stroke-width="1">
+    <!-- Quarteirão principal -->
+    <rect x="10" y="10" width="100" height="70"/>
+    <!-- Pátio interior esquerdo -->
+    <rect x="22" y="22" width="36" height="30"/>
+    <rect x="62" y="22" width="36" height="30"/>
+    <!-- Pátio inferior esquerdo -->
+    <rect x="22" y="58" width="36" height="14"/>
+    <rect x="62" y="58" width="36" height="14"/>
+
+    <!-- Quarteirão direito -->
+    <rect x="120" y="10" width="80" height="70"/>
+    <!-- Pátio interior -->
+    <rect x="132" y="22" width="56" height="46"/>
+
+    <!-- Quarteirão pequeno -->
+    <rect x="210" y="10" width="80" height="32"/>
+    <rect x="222" y="18" width="56" height="16"/>
+
+    <!-- Quarteirão inferior direito -->
+    <rect x="210" y="50" width="80" height="30"/>
+    <rect x="222" y="58" width="56" height="14"/>
+
+    <!-- Ruas -->
+    <line x1="110" y1="0" x2="110" y2="120"/>
+    <line x1="200" y1="0" x2="200" y2="120"/>
+    <line x1="0" y1="80" x2="300" y2="80"/>
+
+    <!-- Indicador de escala -->
+    <line x1="10" y1="100" x2="60" y2="100"/>
+    <line x1="10" y1="97" x2="10" y2="103"/>
+    <line x1="60" y1="97" x2="60" y2="103"/>
+    <text x="35" y="112" font-family="IBM Plex Mono, monospace" font-size="6"
+          fill="#5A5A5A" text-anchor="middle" letter-spacing="0">50m</text>
+  </g>
+</svg>

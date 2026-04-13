@@ -1,0 +1,145 @@
+// _sass/_animations.scss
+// Todas as animações — funcionais e metafóricas
+
+// ─── KEYFRAMES ───────────────────────────────────────────────────────────────
+
+// Gradiente da borda da sidebar desce lentamente
+@keyframes sidebar-border-flow {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 0% 200%; }
+}
+
+// Pulso subtil do carimbo
+@keyframes stamp-pulse {
+  0%, 100% { opacity: 0.65; }
+  50%       { opacity: 0.80; }
+}
+
+// Rotação lenta do carimbo em hover
+@keyframes stamp-rotate {
+  from { transform: rotate(-8deg); }
+  to   { transform: rotate(7deg); }
+}
+
+// Desenho do SVG do edifício (aplicado via JS: stroke-dashoffset → 0)
+@keyframes draw-building {
+  from { stroke-dashoffset: var(--dash-length, 1000); }
+  to   { stroke-dashoffset: 0; }
+}
+
+// Stroke dos numerais outline
+@keyframes draw-stroke {
+  from { stroke-dashoffset: 800; opacity: 0; }
+  to   { stroke-dashoffset: 0; opacity: 0.6; }
+}
+
+// Clip-path reveal de baixo para cima (imagens/capas)
+@keyframes clip-reveal {
+  from { clip-path: inset(100% 0 0 0); }
+  to   { clip-path: inset(0% 0 0 0); }
+}
+
+// Entrada suave de blocos ao scroll
+@keyframes block-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Saída de página (click em link de nav)
+@keyframes page-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+// ─── APLICAÇÕES ──────────────────────────────────────────────────────────────
+
+// Imagens com clip-path reveal
+.img-reveal {
+  clip-path: inset(100% 0 0 0);
+
+  &.revealed {
+    animation: clip-reveal 600ms ease-out forwards;
+  }
+}
+
+// Blocos com entrada ao scroll
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--trans-very-slow),
+    transform var(--trans-very-slow);
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Stagger entre blocos adjacentes — aplicado via JS como delay inline
+// ex: style="transition-delay: 80ms"
+
+// Transição de saída da página
+.page-exiting {
+  animation: page-exit 150ms ease-in forwards;
+}
+
+// ─── RESPEITAR REDUCED MOTION ────────────────────────────────────────────────
+// Desactiva TODAS as animações de entrada/desenho/deslize
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .img-reveal {
+    clip-path: none !important;
+    animation: none !important;
+  }
+
+  .building-svg path,
+  .building-svg line,
+  .building-svg rect,
+  .building-svg polyline {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+
+  .nav-indicator {
+    transition: none !important;
+  }
+
+  .rail-marker {
+    transition: none !important;
+  }
+
+  @keyframes stamp-pulse {
+    from, to { opacity: 0.7; }
+  }
+
+  @keyframes sidebar-border-flow {
+    from, to { background-position: 0% 0%; }
+  }
+}

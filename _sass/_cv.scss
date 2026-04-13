@@ -1,0 +1,320 @@
+// _sass/_cv.scss
+// Página CV — layout de duas colunas, trilho arquitectónico
+
+.cv-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  align-items: start;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── ÍNDICE LATERAL DO CV ────────────────────────────────────────────────────
+.cv-index {
+  position: sticky;
+  top: 32px;
+  background: var(--bg-2);
+  border: 1px solid var(--border-inner);
+  padding: 24px 0;
+
+  @include tablet {
+    position: static;
+    display: flex;
+    overflow-x: auto;
+    padding: 0;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid var(--border-inner);
+    border-bottom: 1px solid var(--border-inner);
+    margin-bottom: 40px;
+  }
+}
+
+.cv-rail {
+  display: flex;
+  padding: 0 24px;
+  position: relative;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+// Trilho arquitectónico vertical
+.rail-track {
+  position: relative;
+  width: 20px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // Linha principal
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+    transform: translateX(-50%);
+  }
+
+  // Triângulo no topo (norte/topo)
+  &::after {
+    content: '▲';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+    color: var(--rust);
+  }
+}
+
+.rail-bottom {
+  text-align: center;
+  padding-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--border);
+}
+
+// Marcador deslizante no trilho
+.rail-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--rust);
+  transition: transform var(--trans-slow);
+  z-index: 2;
+
+  // Cauda horizontal
+  &::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 1px;
+    background: var(--rust);
+  }
+}
+
+.cv-nav-list {
+  flex: 1;
+  padding: 0 0 0 8px;
+
+  @include tablet {
+    display: flex;
+    padding: 0;
+    white-space: nowrap;
+  }
+}
+
+.cv-nav-item {
+  position: relative;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-meta);
+    transition: color var(--trans-mid);
+
+    .nav-tick {
+      width: 6px;
+      height: 1px;
+      background: var(--border);
+      flex-shrink: 0;
+      transition: background var(--trans-mid), width var(--trans-mid);
+    }
+
+    &:hover {
+      color: var(--text);
+
+      .nav-tick {
+        background: rgba(183, 65, 14, 0.5);
+        width: 6px;
+      }
+    }
+  }
+
+  &.active a {
+    color: var(--text);
+
+    .nav-tick {
+      background: var(--rust);
+      width: 10px;
+    }
+  }
+}
+
+// Numeração da escala no rail
+.rail-scale {
+  position: absolute;
+  left: -12px;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  color: var(--border);
+  user-select: none;
+}
+
+// ─── CONTEÚDO DO CV ──────────────────────────────────────────────────────────
+.cv-content {
+  padding: 0 0 0 48px;
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    padding: 0;
+  }
+}
+
+.cv-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-inner);
+  flex-wrap: wrap;
+  gap: 16px;
+
+  .cv-title-text {
+    @include meta-label;
+    font-size: 12px;
+    color: var(--text);
+  }
+
+  .cv-date {
+    @include meta-label;
+    font-size: 10px;
+  }
+}
+
+// Subsecção do CV
+.cv-section {
+  position: relative;
+  padding-top: 32px;
+  margin-bottom: 64px;
+  scroll-margin-top: 32px;
+}
+
+.cv-section-title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 32px;
+
+  // Numeral outline por trás
+  .section-bg-num {
+    font-size: clamp(80px, 12vw, 140px);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(183, 65, 14, 0.3);
+    position: absolute;
+    left: -16px;
+    top: -24px;
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    font-weight: 800;
+  }
+}
+
+// Divisor de fim de secção
+.cv-section-end {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  color: var(--border);
+
+  &::before, &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-inner);
+  }
+
+  .end-label {
+    @include meta-label;
+    font-size: 9px;
+    white-space: nowrap;
+  }
+}
+
+// Entradas do CV — formato ficha técnica
+.cv-entry {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px dashed var(--border-inner);
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.cv-entry-period {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+  padding-top: 2px;
+  font-feature-settings: "tnum";
+}
+
+.cv-entry-content {
+  .entry-institution {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .entry-description {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: rgba(232, 232, 232, 0.7);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+
+  .entry-detail {
+    @include meta-label;
+    font-size: 10px;
+    color: var(--border);
+  }
+}

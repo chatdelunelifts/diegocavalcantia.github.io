@@ -1,0 +1,6 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <path d="M2 2h8l4 4v8H2z" stroke="currentColor" stroke-width="1" fill="none"/>
+  <path d="M10 2v4h4" stroke="currentColor" stroke-width="1" fill="none"/>
+  <line x1="4" y1="9" x2="10" y2="9" stroke="currentColor" stroke-width="1"/>
+  <line x1="4" y1="12" x2="8" y2="12" stroke="currentColor" stroke-width="1"/>
+</svg>

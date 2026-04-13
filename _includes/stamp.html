@@ -1,0 +1,41 @@
+{% assign year = site.time | date: '%Y' %}
+{% assign t = site.data.translations[page.lang | default: site.lang | default: 'pt'] %}
+
+<div class="stamp-verified" aria-hidden="true" title="{{ t.meta.verified }} · {{ year }}">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img">
+    <defs>
+      <path id="stamp-circle" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"/>
+    </defs>
+    <!-- Octógono exterior -->
+    <polygon
+      points="30,10 70,10 90,30 90,70 70,90 30,90 10,70 10,30"
+      fill="none"
+      stroke="#B7410E"
+      stroke-width="1.5"
+    />
+    <!-- Octógono interior -->
+    <polygon
+      points="33,14 67,14 86,33 86,67 67,86 33,86 14,67 14,33"
+      fill="none"
+      stroke="#B7410E"
+      stroke-width="0.5"
+    />
+    <!-- Texto circular -->
+    <text
+      font-family="IBM Plex Mono, monospace"
+      font-size="8"
+      font-weight="500"
+      letter-spacing="3"
+      fill="#B7410E"
+      text-anchor="middle"
+    >
+      <textPath href="#stamp-circle" startOffset="0%">
+        {{ t.meta.verified | upcase }} · {{ year }} · DC · CIUHCT ·
+      </textPath>
+    </text>
+    <!-- Cruz central -->
+    <line x1="46" y1="50" x2="54" y2="50" stroke="#B7410E" stroke-width="1"/>
+    <line x1="50" y1="46" x2="50" y2="54" stroke="#B7410E" stroke-width="1"/>
+    <circle cx="50" cy="50" r="3" fill="none" stroke="#B7410E" stroke-width="0.8"/>
+  </svg>
+</div>

@@ -1,0 +1,4 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1" fill="none"/>
+  <text x="5.5" y="11" font-family="serif" font-size="8" fill="currentColor" font-style="italic">id</text>
+</svg>

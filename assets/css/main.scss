@@ -1,0 +1,21 @@
+---
+---
+// assets/css/main.scss
+// Diego Cavalcanti · Arquivo Vivo
+// Master stylesheet — imports all SCSS partials
+
+@import "variables";
+@import "reset";
+@import "typography";
+@import "layout";
+@import "sidebar";
+@import "header";
+@import "hero";
+@import "cards";
+@import "publications";
+@import "cv";
+@import "contact";
+@import "ornaments";
+@import "animations";
+@import "accessibility";
+@import "responsive";

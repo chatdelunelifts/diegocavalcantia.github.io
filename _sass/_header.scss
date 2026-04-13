@@ -1,0 +1,171 @@
+// _sass/_header.scss
+// No site de Diego Cavalcanti, o "header" global é a sidebar.
+// Este ficheiro contém apenas utilitários de cabeçalho de página
+// e o pub-meta-card (usado no layout de publicação).
+
+// ─── PUB META CARD ────────────────────────────────────────────────────────────
+.pub-meta-card {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  padding: 24px;
+  position: relative;
+  margin-bottom: 32px;
+
+  // Marcadores de corte
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--rust);
+    border-left: 1px solid var(--rust);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--rust);
+    border-right: 1px solid var(--rust);
+  }
+}
+
+.meta-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 6px 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-inner);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  .meta-key {
+    @include meta-label;
+    font-size: 10px;
+    padding-top: 2px;
+  }
+
+  .meta-val {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+}
+
+// Links DOI em destaque
+.doi-link {
+  color: var(--rust);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.pub-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-inner);
+}
+
+// ─── PUB DETAIL — BOOK COVER ──────────────────────────────────────────────────
+.book-cover-detail {
+  position: relative;
+
+  img {
+    width: 100%;
+    filter: grayscale(20%);
+    transition: filter 400ms ease-out;
+
+    &:hover {
+      filter: grayscale(0%);
+    }
+  }
+
+  // Marcadores de corte na capa
+  &::before {
+    content: '';
+    position: absolute;
+    top: 4px; left: 4px;
+    width: 12px; height: 12px;
+    border-top: 1px solid var(--rust);
+    border-left: 1px solid var(--rust);
+    z-index: 2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 4px; right: 4px;
+    width: 12px; height: 12px;
+    border-bottom: 1px solid var(--rust);
+    border-right: 1px solid var(--rust);
+    z-index: 2;
+  }
+}
+
+// ─── PUB NAVIGATION (prev/next) ───────────────────────────────────────────────
+.pub-navigation {
+  margin-top: 64px;
+}
+
+.pub-nav-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pub-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  transition: border-color var(--trans-mid);
+
+  &.next {
+    text-align: right;
+  }
+
+  &:hover {
+    border-color: var(--rust);
+  }
+
+  .nav-direction {
+    @include meta-label;
+    font-size: 10px;
+    color: var(--rust);
+  }
+
+  .nav-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text);
+    line-height: 1.2;
+  }
+}
+
+// ─── PROJECT CARD — período em destaque ──────────────────────────────────────
+.project-period {
+  margin-bottom: 12px;
+}

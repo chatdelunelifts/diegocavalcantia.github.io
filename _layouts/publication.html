@@ -1,0 +1,192 @@
+---
+layout: default
+---
+{% assign t = site.data.translations[page.lang | default: site.lang | default: 'pt'] %}
+{% assign lang = page.lang | default: site.lang | default: 'pt' %}
+
+<div class="page-inner">
+
+  {% include page-file-header.html slug=page.slug updated=page.last_modified_at page_num=1 total=1 %}
+
+  <article class="pub-detail" aria-labelledby="pub-title">
+
+    <header class="pub-detail-header section-block reveal">
+      <div class="section-header">
+        <span class="section-num-display" aria-hidden="true">
+          {% if page.pub_type == 'book' %}01{% elsif page.pub_type == 'article' %}02{% elsif page.pub_type == 'chapter' %}03{% else %}04{% endif %}
+        </span>
+        <div>
+          <p class="tech-subtitle">
+            {% if page.pub_type == 'book' %}LIVRO{% elsif page.pub_type == 'article' %}ARTIGO CIENTÍFICO{% elsif page.pub_type == 'chapter' %}CAPÍTULO DE LIVRO{% else %}PROJECTO{% endif %}
+            {% if page.year %} · {{ page.year }}{% endif %}
+            {% if page.language %} · {{ page.language | upcase }}{% endif %}
+          </p>
+          <h1 id="pub-title">{{ page.title }}</h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="content-grid">
+
+      <!-- Capa (livros) -->
+      {% if page.cover %}
+      <div class="col-4 reveal">
+        <div class="book-cover-detail">
+          <img src="{{ page.cover | relative_url }}"
+               alt="Capa: {{ page.title }}"
+               loading="lazy"
+               class="img-reveal">
+        </div>
+      </div>
+      <div class="col-8">
+      {% else %}
+      <div class="col-full">
+      {% endif %}
+
+        <!-- Ficha técnica -->
+        <div class="pub-meta-card reveal">
+          {% if page.authors %}
+          <div class="meta-row">
+            <span class="meta-key">{{ t.meta.co_authors }}</span>
+            <span class="meta-val">{{ page.authors | join: ', ' }}</span>
+          </div>
+          {% endif %}
+
+          {% if page.publisher %}
+          <div class="meta-row">
+            <span class="meta-key">{{ t.meta.publisher }}</span>
+            <span class="meta-val">{{ page.publisher }}</span>
+          </div>
+          {% endif %}
+
+          {% if page.journal %}
+          <div class="meta-row">
+            <span class="meta-key">REVISTA</span>
+            <span class="meta-val">{{ page.journal }}</span>
+          </div>
+          {% endif %}
+
+          {% if page.volume %}
+          <div class="meta-row">
+            <span class="meta-key">VOLUME</span>
+            <span class="meta-val">{{ page.volume }}{% if page.issue %}, nº {{ page.issue }}{% endif %}{% if page.pages %}, pp. {{ page.pages }}{% endif %}</span>
+          </div>
+          {% endif %}
+
+          {% if page.year %}
+          <div class="meta-row">
+            <span class="meta-key">{{ t.meta.year }}</span>
+            <span class="meta-val">{{ page.year }}</span>
+          </div>
+          {% endif %}
+
+          {% if page.isbn %}
+          <div class="meta-row">
+            <span class="meta-key">{{ t.meta.isbn }}</span>
+            <span class="meta-val">{{ page.isbn }}</span>
+          </div>
+          {% endif %}
+
+          {% if page.doi %}
+          <div class="meta-row">
+            <span class="meta-key">{{ t.meta.doi }}</span>
+            <span class="meta-val">
+              <a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener" class="doi-link">{{ page.doi }}</a>
+            </span>
+          </div>
+          {% endif %}
+
+          {% if page.language %}
+          <div class="meta-row">
+            <span class="meta-key">{{ t.meta.language }}</span>
+            <span class="meta-val">{{ page.language }}</span>
+          </div>
+          {% endif %}
+
+          {% if page.citations %}
+          <div class="meta-row">
+            <span class="meta-key">{{ t.meta.citations }}</span>
+            <span class="meta-val">{{ page.citations }}</span>
+          </div>
+          {% endif %}
+
+          <!-- Links -->
+          <div class="pub-links">
+            {% if page.doi %}
+            <a href="https://doi.org/{{ page.doi }}" class="btn" target="_blank" rel="noopener" aria-label="Abrir no DOI">
+              {% include icons/external.svg %}
+              DOI
+            </a>
+            {% endif %}
+            {% if page.pdf %}
+            <a href="{{ page.pdf | relative_url }}" class="btn" aria-label="Descarregar PDF">
+              {% include icons/download.svg %}
+              PDF
+            </a>
+            {% endif %}
+            {% if page.url_external %}
+            <a href="{{ page.url_external }}" class="btn" target="_blank" rel="noopener" aria-label="Ver publicação">
+              {% include icons/external.svg %}
+              Ver publicação
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+      </div><!-- /.col -->
+    </div><!-- /.content-grid -->
+
+    <!-- Resumo -->
+    {% if page.abstract %}
+    <div class="section-block reveal">
+      <div class="divider-numbered" aria-hidden="true">
+        <span class="divider-label">RESUMO / ABSTRACT</span>
+      </div>
+      <div class="prose pub-abstract-full">
+        <p>{{ page.abstract }}</p>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Conteúdo do ficheiro Markdown -->
+    {% if content != '' %}
+    <div class="section-block prose reveal">
+      <div class="divider-numbered" aria-hidden="true">
+        <span class="divider-label">NOTAS</span>
+      </div>
+      {{ content }}
+    </div>
+    {% endif %}
+
+    <!-- Tags -->
+    {% if page.tags %}
+    <div class="section-block reveal">
+      <nav class="research-tags" aria-label="Áreas temáticas">
+        {% for tag in page.tags %}
+        <a href="{{ '/artigos/' | relative_url }}?tag={{ tag | downcase | replace: ' ', '-' }}" class="research-tag">{{ tag }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+    {% endif %}
+
+    <!-- Navegação prev/next -->
+    <nav class="pub-navigation" aria-label="Publicações anteriores e seguintes">
+      <div class="divider-double" role="presentation"></div>
+      <div class="pub-nav-links">
+        {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="pub-nav-link prev">
+          <span class="nav-direction">← ANTERIOR</span>
+          <span class="nav-title">{{ page.previous.title | truncate: 60 }}</span>
+        </a>
+        {% endif %}
+        {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="pub-nav-link next">
+          <span class="nav-direction">SEGUINTE →</span>
+          <span class="nav-title">{{ page.next.title | truncate: 60 }}</span>
+        </a>
+        {% endif %}
+      </div>
+    </nav>
+
+  </article>
+</div>

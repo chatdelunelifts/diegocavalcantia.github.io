@@ -1,0 +1,139 @@
+<svg class="building-svg" viewBox="0 0 380 520" xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true" role="img">
+
+  <!-- Edifício pombalino lisboeta — alçado esquemático
+       4 pisos + rés-do-chão + cobertura
+       stroke-dasharray animado: desenha de baixo para cima em 1.8s ease-out -->
+
+  <g fill="none" stroke="#2A2A2A" stroke-width="1" stroke-linecap="square">
+
+    <!-- COBERTURA / CORNIJA -->
+    <polyline points="20,60 20,50 360,50 360,60"/>
+    <!-- Beirado decorativo -->
+    <line x1="15" y1="60" x2="365" y2="60"/>
+    <line x1="18" y1="63" x2="362" y2="63"/>
+    <!-- Triângulo frontão central -->
+    <polyline points="155,63 190,30 225,63"/>
+    <line x1="175" y1="55" x2="205" y2="55"/>
+
+    <!-- PISO 4 (ático) -->
+    <rect x="20" y="63" width="340" height="75"/>
+    <!-- Janelas piso 4 — 4 janelas -->
+    <rect x="45" y="80" width="48" height="44"/>
+    <rect x="120" y="80" width="48" height="44"/>
+    <rect x="212" y="80" width="48" height="44"/>
+    <rect x="287" y="80" width="48" height="44"/>
+    <!-- Sobreverga das janelas -->
+    <line x1="45" y1="80" x2="93" y2="80"/>
+    <line x1="120" y1="80" x2="168" y2="80"/>
+    <line x1="212" y1="80" x2="260" y2="80"/>
+    <line x1="287" y1="80" x2="335" y2="80"/>
+    <!-- Peitoril -->
+    <line x1="43" y1="124" x2="95" y2="124"/>
+    <line x1="118" y1="124" x2="170" y2="124"/>
+    <line x1="210" y1="124" x2="262" y2="124"/>
+    <line x1="285" y1="124" x2="337" y2="124"/>
+
+    <!-- FAIXA INTERPISOS 3-4 -->
+    <line x1="20" y1="138" x2="360" y2="138"/>
+    <line x1="20" y1="141" x2="360" y2="141"/>
+
+    <!-- PISO 3 -->
+    <rect x="20" y="141" width="340" height="80"/>
+    <!-- Janelas piso 3 -->
+    <rect x="45" y="156" width="48" height="50"/>
+    <rect x="120" y="156" width="48" height="50"/>
+    <rect x="212" y="156" width="48" height="50"/>
+    <rect x="287" y="156" width="48" height="50"/>
+    <!-- Bandós sobre janelas -->
+    <rect x="45" y="156" width="48" height="8"/>
+    <rect x="120" y="156" width="48" height="8"/>
+    <rect x="212" y="156" width="48" height="8"/>
+    <rect x="287" y="156" width="48" height="8"/>
+
+    <!-- FAIXA INTERPISOS 2-3 -->
+    <line x1="20" y1="221" x2="360" y2="221"/>
+    <line x1="20" y1="224" x2="360" y2="224"/>
+
+    <!-- PISO 2 -->
+    <rect x="20" y="224" width="340" height="80"/>
+    <rect x="45" y="239" width="48" height="50"/>
+    <rect x="120" y="239" width="48" height="50"/>
+    <rect x="212" y="239" width="48" height="50"/>
+    <rect x="287" y="239" width="48" height="50"/>
+    <rect x="45" y="239" width="48" height="8"/>
+    <rect x="120" y="239" width="48" height="8"/>
+    <rect x="212" y="239" width="48" height="8"/>
+    <rect x="287" y="239" width="48" height="8"/>
+
+    <!-- FAIXA INTERPISOS 1-2 -->
+    <line x1="20" y1="304" x2="360" y2="304"/>
+    <line x1="20" y1="307" x2="360" y2="307"/>
+
+    <!-- PISO 1 -->
+    <rect x="20" y="307" width="340" height="80"/>
+    <rect x="45" y="322" width="48" height="50"/>
+    <rect x="120" y="322" width="48" height="50"/>
+    <rect x="212" y="322" width="48" height="50"/>
+    <rect x="287" y="322" width="48" height="50"/>
+
+    <!-- FAIXA INTERPISOS RDC-1 -->
+    <line x1="20" y1="387" x2="360" y2="387"/>
+    <line x1="20" y1="390" x2="360" y2="390"/>
+
+    <!-- RÉS-DO-CHÃO -->
+    <rect x="20" y="390" width="340" height="90"/>
+    <!-- Porta principal central com arco -->
+    <rect x="165" y="420" width="50" height="60"/>
+    <path d="M165,420 Q190,398 215,420"/>
+    <!-- Montante central -->
+    <line x1="190" y1="420" x2="190" y2="480"/>
+    <!-- Lojas laterais -->
+    <rect x="45" y="415" width="90" height="65"/>
+    <rect x="225" y="415" width="90" height="65"/>
+    <!-- Bandos das lojas -->
+    <line x1="45" y1="415" x2="135" y2="415"/>
+    <line x1="225" y1="415" x2="315" y2="415"/>
+
+    <!-- EMBASAMENTO -->
+    <rect x="15" y="480" width="350" height="15"/>
+    <!-- Linha base -->
+    <line x1="10" y1="495" x2="370" y2="495"/>
+
+    <!-- PILASTRAS ESTRUTURAIS -->
+    <line x1="108" y1="63" x2="108" y2="495"/>
+    <line x1="192" y1="63" x2="192" y2="390"/>
+    <line x1="272" y1="63" x2="272" y2="495"/>
+
+    <!-- COTAÇÕES / MARCAS TÉCNICAS -->
+    <!-- Cota de altura total -->
+    <line x1="375" y1="50" x2="375" y2="495"/>
+    <line x1="370" y1="50" x2="380" y2="50"/>
+    <line x1="370" y1="495" x2="380" y2="495"/>
+    <!-- Marcas de piso -->
+    <line x1="370" y1="138" x2="378" y2="138"/>
+    <line x1="370" y1="221" x2="378" y2="221"/>
+    <line x1="370" y1="304" x2="378" y2="304"/>
+    <line x1="370" y1="387" x2="378" y2="387"/>
+
+    <!-- Seta de norte (canto superior esquerdo) -->
+    <line x1="8" y1="20" x2="8" y2="5"/>
+    <polyline points="5,12 8,5 11,12"/>
+    <text x="8" y="28" font-family="IBM Plex Mono, monospace" font-size="6"
+          fill="#5A5A5A" text-anchor="middle" letter-spacing="0">N</text>
+
+    <!-- Linha de escala -->
+    <line x1="30" y1="510" x2="130" y2="510"/>
+    <line x1="30" y1="507" x2="30" y2="513"/>
+    <line x1="80" y1="507" x2="80" y2="513"/>
+    <line x1="130" y1="507" x2="130" y2="513"/>
+    <text x="30" y="505" font-family="IBM Plex Mono, monospace" font-size="6"
+          fill="#5A5A5A" text-anchor="middle">0</text>
+    <text x="80" y="505" font-family="IBM Plex Mono, monospace" font-size="6"
+          fill="#5A5A5A" text-anchor="middle">5m</text>
+    <text x="130" y="505" font-family="IBM Plex Mono, monospace" font-size="6"
+          fill="#5A5A5A" text-anchor="middle">10m</text>
+
+  </g>
+
+</svg>

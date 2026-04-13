@@ -1,0 +1,288 @@
+// _sass/_hero.scss
+// Hero vertical — écran inteiro, nome monumental, SVG de edifício
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: center;
+  padding: 80px var(--grid-margin);
+  position: relative;
+  overflow: hidden;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    padding: 100px 32px 60px;
+    min-height: auto;
+  }
+
+  @include mobile {
+    padding: 80px 20px 48px;
+  }
+}
+
+// ─── CONTEÚDO ESQUERDO ───────────────────────────────────────────────────────
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  @include meta-label;
+  margin-bottom: 24px;
+  color: var(--rust);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--rust);
+  }
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: $type-hero;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.88;
+  color: var(--text);
+  margin-bottom: 32px;
+
+  .name-line {
+    display: block;
+  }
+
+  // Cavalcanti em stroke — contraste brutal
+  .name-line-2 {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--text);
+    text-stroke: 2px var(--text);
+  }
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: $type-meta;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  // Pontos de separação
+  span.sep {
+    color: var(--rust);
+    opacity: 0.7;
+  }
+}
+
+.hero-manifesto {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: rgba(232, 232, 232, 0.6);
+  font-style: italic;
+  line-height: 1.5;
+  max-width: 420px;
+  margin-bottom: 40px;
+  padding-left: 16px;
+  border-left: 2px solid var(--rust);
+}
+
+// Ícones de contacto do hero — quadrados 40x40
+.hero-contacts {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  .hero-contact-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      border-color var(--trans-mid),
+      background var(--trans-mid),
+      transform var(--trans-fast);
+    position: relative;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: var(--text-meta);
+      transition: stroke var(--trans-mid);
+    }
+
+    &:hover, &:focus-visible {
+      border-color: var(--rust);
+      transform: translateY(-3px);
+
+      svg {
+        stroke: var(--rust);
+      }
+
+      .icon-tooltip {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--rust);
+      outline-offset: 2px;
+    }
+  }
+
+  .icon-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--bg-3);
+    border: 1px solid var(--border-inner);
+    color: var(--text-meta);
+    padding: 3px 6px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity var(--trans-mid), transform var(--trans-mid);
+    pointer-events: none;
+  }
+}
+
+// ─── SVG EDIFÍCIO (direita) ──────────────────────────────────────────────────
+.hero-building {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    display: none; // ocultado em mobile para poupar espaço
+  }
+
+  .building-svg {
+    width: 100%;
+    max-width: 420px;
+    opacity: 0.35;
+
+    // Animação de desenho — aplicada via JS (stroke-dasharray/dashoffset)
+    path, line, rect, polyline {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+
+    &.is-drawn path,
+    &.is-drawn line,
+    &.is-drawn rect,
+    &.is-drawn polyline {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+// ─── SECÇÃO ARQUIVO / ACTIVIDADE RECENTE ─────────────────────────────────────
+.archive-section {
+  padding: 80px var(--grid-margin);
+  position: relative;
+  z-index: 1;
+
+  @include tablet {
+    padding: 48px 32px;
+  }
+
+  @include mobile {
+    padding: 32px 20px;
+  }
+}
+
+.archive-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-inner);
+
+  .archive-title {
+    font-family: var(--font-mono);
+    font-size: $type-meta;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-meta);
+
+    .title-accent {
+      color: var(--rust);
+    }
+  }
+
+  .archive-count {
+    @include meta-label;
+    font-size: 10px;
+  }
+}
+
+// ─── CONTRIBUTION GRAPH ──────────────────────────────────────────────────────
+.contribution-graph {
+  margin-top: 48px;
+  overflow-x: auto;
+
+  .graph-label {
+    @include meta-label;
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+
+  .graph-grid {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+  }
+
+  .graph-week {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .graph-day {
+    width: 10px;
+    height: 10px;
+    background: var(--bg-3);
+    transition: background var(--trans-mid);
+
+    &[data-level="1"] { background: rgba(183, 65, 14, 0.25); }
+    &[data-level="2"] { background: rgba(183, 65, 14, 0.5); }
+    &[data-level="3"] { background: rgba(183, 65, 14, 0.75); }
+    &[data-level="4"] { background: var(--rust); }
+
+    &:hover {
+      outline: 1px solid var(--rust);
+    }
+  }
+}
+
+// ─── TAGS DE INVESTIGAÇÃO ────────────────────────────────────────────────────
+.research-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 48px;
+}

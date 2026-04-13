@@ -1,0 +1,11 @@
+{% assign t = site.data.translations[page.lang | default: site.lang | default: 'pt'] %}
+{% assign slug = include.slug | default: page.slug | default: page.url | replace: '/', '-' | remove_first: '-' %}
+{% assign updated = include.updated | default: site.time | date: '%Y-%m-%d' %}
+
+<div class="page-file-header" role="complementary" aria-label="Metadados da ficha">
+  <span class="file-org">{{ t.meta.archive_header }}</span>
+  <span class="file-ref">{{ t.meta.ref_prefix }}{{ slug | upcase }} · {{ t.meta.updated }}: {{ updated }}</span>
+  {% if include.page_num and include.total %}
+  <span class="file-page">{{ t.meta.page }} {{ include.page_num }} {{ t.meta.of }} {{ include.total }}</span>
+  {% endif %}
+</div>

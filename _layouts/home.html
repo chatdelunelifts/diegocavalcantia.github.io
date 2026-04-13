@@ -1,0 +1,152 @@
+---
+layout: default
+---
+{% assign t = site.data.translations[page.lang | default: site.lang | default: 'pt'] %}
+
+<!-- HERO -->
+<section class="hero" aria-label="Apresentação">
+
+  <div class="hero-content reveal">
+    <p class="hero-eyebrow" aria-hidden="true">CIUHCT · NOVA FCT · FCT</p>
+
+    <h1 class="hero-name">
+      <span class="name-line">DIEGO</span>
+      <span class="name-line name-line-2">CAVALCANTI</span>
+    </h1>
+
+    <p class="hero-subtitle" aria-label="{{ t.meta.hero_subtitle }}">
+      <span>HISTORIADOR</span>
+      <span class="sep">·</span>
+      <span>URBANISMO</span>
+      <span class="sep">·</span>
+      <span>LISBOA SÉC. XX</span>
+    </p>
+
+    <blockquote class="hero-manifesto">
+      <p>{{ t.meta.hero_manifesto }}</p>
+    </blockquote>
+
+    <!-- Contactos -->
+    <nav class="hero-contacts" aria-label="Contactos e perfis académicos">
+      <a href="mailto:{{ site.author.email }}" class="hero-contact-icon" aria-label="Email">
+        {% include icons/email.svg %}
+        <span class="icon-tooltip">Email</span>
+      </a>
+      <a href="{{ site.author.orcid }}" class="hero-contact-icon" target="_blank" rel="noopener" aria-label="ORCID">
+        {% include icons/orcid.svg %}
+        <span class="icon-tooltip">ORCID</span>
+      </a>
+      <a href="{{ site.author.academia }}" class="hero-contact-icon" target="_blank" rel="noopener" aria-label="Academia.edu">
+        {% include icons/academia.svg %}
+        <span class="icon-tooltip">Academia</span>
+      </a>
+      <a href="{{ site.author.github }}" class="hero-contact-icon" target="_blank" rel="noopener" aria-label="GitHub">
+        {% include icons/github.svg %}
+        <span class="icon-tooltip">GitHub</span>
+      </a>
+      <a href="{{ site.author.linkedin }}" class="hero-contact-icon" target="_blank" rel="noopener" aria-label="LinkedIn">
+        {% include icons/linkedin.svg %}
+        <span class="icon-tooltip">LinkedIn</span>
+      </a>
+      <a href="{{ site.author.ciuhct }}" class="hero-contact-icon" target="_blank" rel="noopener" aria-label="CIUHCT">
+        {% include icons/institution.svg %}
+        <span class="icon-tooltip">CIUHCT</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- SVG edifício pombalino — anima ao carregar -->
+  <div class="hero-building" aria-hidden="true">
+    {% include svg/building-pombalino.svg %}
+  </div>
+
+</section>
+
+<!-- ARQUIVO · ACTIVIDADE RECENTE -->
+<section class="archive-section" aria-labelledby="archive-title">
+
+  <div class="archive-header">
+    <h2 id="archive-title" class="archive-title">
+      <span class="title-accent">◼</span> {{ t.meta.recent_activity }}
+    </h2>
+    <span class="archive-count meta-label">
+      {% assign total = site.books.size | plus: site.articles.size | plus: site.chapters.size | plus: site.projects.size %}
+      {{ total }} ENTRADAS
+    </span>
+  </div>
+
+  <!-- Grelha de cards -->
+  <div class="cards-grid" role="list">
+
+    {% assign all_pubs = site.books | concat: site.articles | concat: site.chapters | concat: site.projects | sort: 'year' | reverse %}
+    {% for item in all_pubs limit: 6 %}
+    <article class="pub-card type-{{ item.pub_type | default: item.layout }} reveal" role="listitem"
+             style="transition-delay: {{ forloop.index0 | times: 80 }}ms;">
+      <div class="card-corner-bl"></div>
+      <div class="card-corner-br"></div>
+      <div class="card-type-bar"></div>
+
+      {% if item.cover %}
+      <div class="card-cover">
+        <img src="{{ item.cover | relative_url }}" alt="Capa de {{ item.title }}" loading="lazy">
+      </div>
+      {% endif %}
+
+      <div class="card-body">
+        <div class="card-header">
+          <span class="card-type-icon" aria-hidden="true">
+            {% if item.pub_type == 'book' or item.layout == 'project' and item.pub_type == nil %}
+              {% include icons/book.svg %}
+            {% elsif item.pub_type == 'article' %}
+              {% include icons/article.svg %}
+            {% elsif item.pub_type == 'chapter' %}
+              {% include icons/chapter.svg %}
+            {% else %}
+              {% include icons/project.svg %}
+            {% endif %}
+          </span>
+          <h3 class="card-title">
+            <a href="{{ item.url | relative_url }}" class="card-link stretched-link">{{ item.title }}</a>
+          </h3>
+        </div>
+
+        {% if item.description %}
+        <p class="card-description">{{ item.description | truncate: 120 }}</p>
+        {% endif %}
+      </div>
+
+      <footer class="card-footer">
+        <div class="card-meta">
+          <span>{% if item.pub_type == 'book' %}LIVRO{% elsif item.pub_type == 'article' %}ARTIGO{% elsif item.pub_type == 'chapter' %}CAPÍTULO{% else %}PROJECTO{% endif %}</span>
+          {% if item.year %}<span class="meta-sep">·</span><span>{{ item.year }}</span>{% endif %}
+          {% if item.language %}<span class="meta-sep">·</span><span>{{ item.language | upcase }}</span>{% endif %}
+        </div>
+        {% if item.citations %}
+        <span class="card-citations" aria-label="{{ item.citations }} citações">
+          <span class="cite-icon" aria-hidden="true">⌘</span> {{ item.citations }}
+        </span>
+        {% endif %}
+      </footer>
+    </article>
+    {% endfor %}
+
+  </div>
+
+  <!-- Contribution Graph -->
+  <div class="contribution-graph reveal" aria-label="Calendário de publicações">
+    <p class="graph-label">ACTIVIDADE · 2020–{{ 'now' | date: '%Y' }}</p>
+    <div class="graph-grid" id="contribution-graph" aria-hidden="true">
+      <!-- Gerado via JavaScript: assets/js/contribution-graph.js -->
+    </div>
+  </div>
+
+  <!-- Tags de investigação -->
+  <nav class="research-tags" aria-label="{{ t.meta.research_areas }}">
+    <h3 class="visually-hidden">{{ t.meta.research_areas }}</h3>
+    {% assign tags = "History of Technology,Housing Policies and Urban Planning,Sustainable Urban Mobilities,History of Urban Mobility,Social History" | split: "," %}
+    {% for tag in tags %}
+    <a href="{{ '/artigos/' | relative_url }}?tag={{ tag | downcase | replace: ' ', '-' }}" class="research-tag">{{ tag }}</a>
+    {% endfor %}
+  </nav>
+
+</section>

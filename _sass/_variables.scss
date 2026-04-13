@@ -1,0 +1,140 @@
+// _sass/_variables.scss
+// Diego Cavalcanti · Arquivo Vivo
+// Design tokens — paleta metálica, tipografia técnica
+
+// ─── PALETA ──────────────────────────────────────────────────────────────────
+// Tons de metal e mineral — arquivo municipal lisboeta
+
+$color-bg:           #0A0A0A;   // grafite profundo — fundo principal
+$color-bg-2:         #141414;   // grafite — segundo nível, sidebar CV
+$color-bg-3:         #1E1E1E;   // ardósia — cards, blocos
+$color-border-inner: #2A2A2A;   // aço escuro — bordas internas, divisores
+$color-border:       #5A5A5A;   // aço médio — bordas de blocos, meta inactivo
+$color-text-meta:    #8A8A8A;   // cimento — texto secundário, labels
+$color-text:         #E8E8E8;   // cal — texto principal
+$color-paper:        #F5F1E8;   // papel envelhecido — APENAS selos/carimbos
+
+$color-rust:         #B7410E;   // ferrugem / óxido de ferro — acento primário
+$color-rust-dark:    #8B3A0C;   // ferrugem escura — hover do acento
+$color-steel-blue:   #3A4A52;   // azul-aço oxidado — sidebar principal
+$color-steel-light:  #4A5C66;   // azul-aço claro — hover sidebar
+$color-patina:       #6B7F1A;   // verde-patina — acento terciário, muito raro
+
+// ─── CSS CUSTOM PROPERTIES ───────────────────────────────────────────────────
+:root {
+  --bg:           #{$color-bg};
+  --bg-2:         #{$color-bg-2};
+  --bg-3:         #{$color-bg-3};
+  --border-inner: #{$color-border-inner};
+  --border:       #{$color-border};
+  --text-meta:    #{$color-text-meta};
+  --text:         #{$color-text};
+  --paper:        #{$color-paper};
+  --rust:         #{$color-rust};
+  --rust-dark:    #{$color-rust-dark};
+  --steel-blue:   #{$color-steel-blue};
+  --steel-light:  #{$color-steel-light};
+  --patina:       #{$color-patina};
+
+  // Sidebar
+  --sidebar-width: 240px;
+  --sidebar-width-collapsed: 0px;
+
+  // Grelha
+  --grid-cols: 12;
+  --grid-gutter: 24px;
+  --grid-margin: 64px;
+  --content-max: 1200px;
+
+  // Tipografia
+  --font-display: 'Archivo Narrow', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  // Transições
+  --trans-fast: 150ms ease-out;
+  --trans-mid:  280ms ease-out;
+  --trans-slow: 320ms cubic-bezier(.65, 0, .35, 1);
+  --trans-very-slow: 500ms ease-out;
+}
+
+// ─── TIPOGRAFIA — ESCALAS ────────────────────────────────────────────────────
+$type-hero:    clamp(80px, 14vw, 180px);
+$type-h1:      clamp(48px, 6vw, 96px);
+$type-h2:      clamp(32px, 4vw, 48px);
+$type-h3:      28px;
+$type-body:    15px;
+$type-meta:    11px;
+$type-section-num: 200px;  // numerais outline gigantes
+
+// ─── BREAKPOINTS ─────────────────────────────────────────────────────────────
+$bp-mobile:  480px;
+$bp-tablet:  768px;
+$bp-desktop: 1024px;
+$bp-wide:    1440px;
+
+@mixin mobile  { @media (max-width: #{$bp-tablet - 1px}) { @content; } }
+@mixin tablet  { @media (max-width: #{$bp-desktop - 1px}) { @content; } }
+@mixin desktop { @media (min-width: #{$bp-desktop}) { @content; } }
+@mixin wide    { @media (min-width: #{$bp-wide}) { @content; } }
+
+// ─── MIXINS UTILITÁRIOS ──────────────────────────────────────────────────────
+
+// Marcadores de corte nos cantos dos blocos
+@mixin corner-marks($size: 8px, $color: var(--rust)) {
+  position: relative;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: $size;
+    height: $size;
+    pointer-events: none;
+  }
+
+  // Canto superior esquerdo
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1px solid $color;
+    border-left: 1px solid $color;
+  }
+
+  // Canto superior direito
+  &::after {
+    top: -1px;
+    right: -1px;
+    border-top: 1px solid $color;
+    border-right: 1px solid $color;
+  }
+}
+
+// Divisor técnico duplo
+@mixin divider-double {
+  position: relative;
+  border: none;
+  height: 5px;
+  background:
+    linear-gradient(var(--border-inner), var(--border-inner)) top/100% 1px no-repeat,
+    linear-gradient(var(--border-inner), var(--border-inner)) bottom/100% 1px no-repeat;
+  margin: 32px 0;
+}
+
+// Label de meta em caixa alta
+@mixin meta-label {
+  font-family: var(--font-mono);
+  font-size: $type-meta;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+
+// Borda do bloco com cor de hover
+@mixin block-border {
+  border: 1px solid var(--border);
+  transition: border-color var(--trans-mid);
+
+  &:hover {
+    border-color: var(--rust);
+  }
+}
