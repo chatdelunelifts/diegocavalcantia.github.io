@@ -1,0 +1,81 @@
+title: "Diego Cavalcanti"
+description: "PhD Candidate · History of Science & Technology · NOVA FCT · CIUHCT"
+url: "https://diegocavalcanti.github.io"
+baseurl: ""
+author:
+  name: "Diego Cavalcanti"
+  email: "d.cavalcanti@campus.fct.unl.pt"
+  orcid: "0000-0000-0000-0000"
+  academia: "https://novaims.academia.edu/DiegoCavalcanti"
+  github: "https://github.com/diegocavalcanti"
+  linkedin: "https://linkedin.com/in/diegocavalcanti"
+  ciuhct: "https://ciuhct.org"
+
+lang: "pt"
+timezone: "Europe/Lisbon"
+
+# Collections
+collections:
+  books:
+    output: true
+    permalink: /livros/:slug/
+  articles:
+    output: true
+    permalink: /artigos/:slug/
+  chapters:
+    output: true
+    permalink: /capitulos/:slug/
+  projects:
+    output: true
+    permalink: /projectos/:slug/
+  cv:
+    output: false
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "books"
+    values:
+      layout: "publication"
+      pub_type: "book"
+  - scope:
+      path: ""
+      type: "articles"
+    values:
+      layout: "publication"
+      pub_type: "article"
+  - scope:
+      path: ""
+      type: "chapters"
+    values:
+      layout: "publication"
+      pub_type: "chapter"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Build
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - .git
