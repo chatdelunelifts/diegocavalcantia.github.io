@@ -1,20 +1,35 @@
 title: "Diego Cavalcanti"
 description: "PhD Candidate · History of Science & Technology · NOVA FCT · CIUHCT"
-url: "https://diegocavalcanti.github.io"
+url: "https://chatdelunelifts.github.io"
 baseurl: ""
+
 author:
   name: "Diego Cavalcanti"
   email: "d.cavalcanti@campus.fct.unl.pt"
-  orcid: "0000-0000-0000-0000"
+  orcid: "https://orcid.org/0000-0002-3287-9465"
   academia: "https://novaims.academia.edu/DiegoCavalcanti"
   github: "https://github.com/diegocavalcanti"
-  linkedin: "https://linkedin.com/in/diegocavalcanti"
+  linkedin: "https://www.linkedin.com/in/cavalcantidiego/"
+  ciencia_id: "5015-CDFD-4D92"
+  cienciavitae: "https://www.cienciavitae.pt/5015-CDFD-4D92"
   ciuhct: "https://ciuhct.org"
+
+funding:
+  grant_code: "2023.01509.BD"
+  doi: "10.54499/2023.01509.BD"
+  doi_url: "https://doi.org/10.54499/2023.01509.BD"
+  funder_pt: "FCT — Fundação para a Ciência e a Tecnologia"
+  funder_en: "FCT — Fundação para a Ciência e a Tecnologia"
 
 lang: "pt"
 timezone: "Europe/Lisbon"
 
-# Collections
+# Plugins compatíveis com GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
 collections:
   books:
     output: true
@@ -28,10 +43,7 @@ collections:
   projects:
     output: true
     permalink: /projectos/:slug/
-  cv:
-    output: false
 
-# Defaults
 defaults:
   - scope:
       path: ""
@@ -57,13 +69,6 @@ defaults:
     values:
       layout: "project"
 
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-
-# Build
 markdown: kramdown
 highlighter: rouge
 kramdown:
@@ -71,11 +76,9 @@ kramdown:
   auto_ids: true
   hard_wrap: false
 
-# Exclude
 exclude:
   - Gemfile
   - Gemfile.lock
-  - node_modules
-  - vendor
   - README.md
   - .git
+  - vendor
