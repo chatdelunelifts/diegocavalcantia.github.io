@@ -1,27 +1,26 @@
 ---
-title: "Planeamento Urbano, Conhecimento Técnico e Desigualdade em Lisboa, 1934–1977"
+title: "A "contrapelo" do planeamento: habitações clandestinas, acessibilidade e a construção do território lisboeta por sujeitos marginalizados (1934 a 1977)"
 layout: project
 pub_type: project
-year_start: 2022
-year_end:
+year_start: 2023
+year_end: 2027
 status: ongoing
 pi: "Diego Cavalcanti"
 funding: "FCT — Fundação para a Ciência e a Tecnologia"
+grant_code: "2023.01509.BD"
+doi: "10.54499/2023.01509.BD"
 institutions:
-  - "CIUHCT / NOVA FCT"
+  - "CIUHCT — Centro Interuniversitário de História das Ciências e da Tecnologia"
+  - "NOVA FCT — Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa"
 output: "Tese de Doutoramento (em curso)"
 description: >
-  Doctoral research examining urban planning policies and land-use regulation in Lisbon
-  between 1934 and 1977. The project focuses on how scientific and technical knowledge
-  was mobilised in planning practices, on the political economy of urban land, and on
-  the agency of marginalised populations living in informal settlements in shaping the
-  city. The research draws on extensive archival work at the Arquivo Municipal de Lisboa,
-  the Arquivo Nacional Torre do Tombo, and the Arquivo Histórico do Ministério das Obras
-  Públicas, as well as oral history interviews.
+  Doctoral research in History, Philosophy and Heritage of Science and Technology at NOVA FCT,
+  examining how marginalised subjects constructed Lisbon's urban territory through clandestine
+  housing and informal accessibility practices between 1934 and 1977, working "against the grain"
+  of official urban planning.
 area: urban-history
 tags:
   - Housing Policies and Urban Planning
   - History of Technology
   - Social History
-  - Urban Informality
 ---

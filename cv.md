@@ -81,20 +81,65 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
         </h2>
 
         <div class="cv-entry">
-          <span class="cv-entry-period">2023–PRES.</span>
+          <span class="cv-entry-period">2025–PRES.</span>
           <div class="cv-entry-content">
-            <p class="entry-institution">Technology and Culture</p>
+            <p class="entry-institution">Society for the History of Technology (SHOT)</p>
             <p class="entry-description">Assistant Book Review Editor</p>
-            <p class="entry-detail">Society for the History of Technology (SHOT) · Peer-reviewed journal</p>
+            <p class="entry-detail">Johns Hopkins University Press</p>
           </div>
         </div>
 
         <div class="cv-entry">
-          <span class="cv-entry-period">2022–2024</span>
+          <span class="cv-entry-period">2024–2027</span>
           <div class="cv-entry-content">
-            <p class="entry-institution">Hi-BicLab – Laboratório de História para Mobilidades Urbanas Sustentáveis</p>
-            <p class="entry-description">Investigador colaborador</p>
-            <p class="entry-detail">FCT-funded · PI: M. Luísa Sousa · CIUHCT, NOVA FCT</p>
+            <p class="entry-institution">Faculdade de Ciências e Tecnologia da Universidade NOVA</p>
+            <p class="entry-description">Bolseiro de investigação — Doutoramento</p>
+            <p class="entry-detail">FCT — Fundação para a Ciência e a Tecnologia</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2022–2023</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">CIUHCT — Centro Interuniversitário de História das Ciências e da Tecnologia</p>
+            <p class="entry-description">Investigador (Research Fellow)</p>
+            <p class="entry-detail">Associação para a Inovação e Desenvolvimento da FCT</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2022</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">EEM Nailton Cavalcante Lima</p>
+            <p class="entry-description">Professor ensino secundário</p>
+            <p class="entry-detail">Secretaria de Estado de Educação do Ceará, Brasil</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2018–2021</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">Universidade Federal do Ceará</p>
+            <p class="entry-description">Investigador (Research)</p>
+            <p class="entry-detail">CNPq — Conselho Nacional de Desenvolvimento Científico e Tecnológico, Brasil</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2015–2018</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">Universidade Federal do Ceará</p>
+            <p class="entry-description">Investigador (Research)</p>
+            <p class="entry-detail">Ministério da Educação, Brasil</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2014–2016</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">Universidade Federal do Ceará</p>
+            <p class="entry-description">Investigador (Research)</p>
+            <p class="entry-detail">Universidade Federal do Ceará, Brasil</p>
           </div>
         </div>
 
@@ -111,29 +156,38 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
         </h2>
 
         <div class="cv-entry">
-          <span class="cv-entry-period">2022–PRES.</span>
+          <span class="cv-entry-period">2023–2027</span>
           <div class="cv-entry-content">
-            <p class="entry-institution">NOVA School of Science and Technology (NOVA FCT)</p>
-            <p class="entry-description">PhD em História, Filosofia e Património da Ciência e Tecnologia</p>
-            <p class="entry-detail">CIUHCT · Bolsa FCT · Lisboa, Portugal</p>
+            <p class="entry-institution">CIUHCT / NOVA School of Science and Technology (NOVA FCT)</p>
+            <p class="entry-description">Doutoramento em História, Filosofia e Património da Ciência e Tecnologia</p>
+            <p class="entry-detail">Bolsa FCT (2023.01509.BD) · Lisboa, Portugal</p>
           </div>
         </div>
 
         <div class="cv-entry">
-          <span class="cv-entry-period">2019–2021</span>
+          <span class="cv-entry-period">2024–2025</span>
           <div class="cv-entry-content">
-            <p class="entry-institution">Universidade Federal do Ceará (UFC)</p>
-            <p class="entry-description">Mestrado em História Social — classificação máxima</p>
-            <p class="entry-detail">Bolsa CAPES · Reconhecido pela NOVA University Lisbon · Fortaleza, Brasil</p>
+            <p class="entry-institution">Centro Universitário Anhanguera Pitágoras / Unopar de Niterói</p>
+            <p class="entry-description">Pós-Graduação — Prescrição de Treinos e Exercícios</p>
+            <p class="entry-detail">Classificação: 9.8/10 · Brasil</p>
           </div>
         </div>
 
         <div class="cv-entry">
-          <span class="cv-entry-period">2014–2018</span>
+          <span class="cv-entry-period">2022</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">Universidade Nova de Lisboa</p>
+            <p class="entry-description">Mestrado em História (reconhecimento)</p>
+            <p class="entry-detail">Classificação: 20 valores · Lisboa, Portugal</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2018–2021</span>
           <div class="cv-entry-content">
             <p class="entry-institution">Universidade Federal do Ceará (UFC)</p>
-            <p class="entry-description">Licenciatura em História</p>
-            <p class="entry-detail">COMTER · PET–História · Fortaleza, Brasil</p>
+            <p class="entry-description">Mestrado em História Social</p>
+            <p class="entry-detail">Classificação: 9,73/10 · Fortaleza, Brasil</p>
           </div>
         </div>
 
@@ -150,20 +204,11 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
         </h2>
 
         <div class="cv-entry">
-          <span class="cv-entry-period">2022–PRES.</span>
+          <span class="cv-entry-period">2024–2027</span>
           <div class="cv-entry-content">
             <p class="entry-institution">Bolsa de Doutoramento — FCT</p>
             <p class="entry-description">Fundação para a Ciência e a Tecnologia</p>
-            <p class="entry-detail">Portugal</p>
-          </div>
-        </div>
-
-        <div class="cv-entry">
-          <span class="cv-entry-period">2019–2021</span>
-          <div class="cv-entry-content">
-            <p class="entry-institution">Bolsa de Mestrado — CAPES</p>
-            <p class="entry-description">Coordenação de Aperfeiçoamento de Pessoal de Nível Superior</p>
-            <p class="entry-detail">Brasil</p>
+            <p class="entry-detail">Ref. 2023.01509.BD · Portugal</p>
           </div>
         </div>
 
@@ -180,11 +225,11 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
         </h2>
 
         <div class="cv-entry">
-          <span class="cv-entry-period">2023–PRES.</span>
+          <span class="cv-entry-period">2025–PRES.</span>
           <div class="cv-entry-content">
-            <p class="entry-institution">Technology and Culture</p>
+            <p class="entry-institution">Society for the History of Technology (SHOT)</p>
             <p class="entry-description">Assistant Book Review Editor</p>
-            <p class="entry-detail">Johns Hopkins University Press · SHOT · ISSN 0040-165X</p>
+            <p class="entry-detail">Johns Hopkins University Press</p>
           </div>
         </div>
 
@@ -203,8 +248,7 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
         <div class="cv-entry">
           <span class="cv-entry-period"></span>
           <div class="cv-entry-content">
-            <p class="entry-institution">Technology and Culture · Análise Social · Urban History</p>
-            <p class="entry-description">Revisor ad hoc</p>
+            <p class="entry-description" style="color:var(--text-meta);font-style:italic;">A preencher.</p>
           </div>
         </div>
 
@@ -221,20 +265,47 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
         </h2>
 
         <div class="cv-entry">
-          <span class="cv-entry-period">2024</span>
+          <span class="cv-entry-period">2025</span>
           <div class="cv-entry-content">
-            <p class="entry-institution">Annual Meeting — Society for the History of Technology (SHOT)</p>
-            <p class="entry-description">Comunicação em painel</p>
-            <p class="entry-detail">Tema: Planeamento urbano, ciência e exclusão em Lisboa, 1934–1977</p>
+            <p class="entry-institution">SHOT Annual Meeting</p>
+            <p class="entry-description">Bicycles and the City: Reimagining accessibility and informal housing in 1950s-1960s Lisbon</p>
+            <p class="entry-detail">Belval Campus, University of Luxembourg (Esch-sur-Alzette, Luxembourg)</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2025</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">8.º Encontro Nacional de História das Ciências e Tecnologia / 3.º Encontro Nacional de História da Química</p>
+            <p class="entry-description">'Uma cidade saudável, cómoda e agradável': Circulação de ideias e o dilema das "concentrações urbanas" no plano de Étienne Groër (1938-1948)</p>
+            <p class="entry-detail">Universidade de Aveiro (Aveiro, Portugal)</p>
           </div>
         </div>
 
         <div class="cv-entry">
           <span class="cv-entry-period">2023</span>
           <div class="cv-entry-content">
-            <p class="entry-institution">Congresso Internacional de História — CIUHCT</p>
-            <p class="entry-description">Comunicação</p>
-            <p class="entry-detail">Lisboa, Portugal</p>
+            <p class="entry-institution">2023 GMHC and T²M Annual Conference</p>
+            <p class="entry-description">Beyond outreach: interdisciplinarity and public engagement for a history lab on low cycling maturity cities</p>
+            <p class="entry-detail">Academy of Mobility Humanities, Konkuk University (Seoul, South Korea)</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2023</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">Cycling and Society Research Group Annual Symposium 2023</p>
+            <p class="entry-description">(Re)discovering the past, imagining the future: a History Lab for Lisbon's cycling policies</p>
+            <p class="entry-detail">Cycling and Society Research Group (Dublin, Ireland)</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2023</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">I Congresso História Pública em Portugal: práticas, experiências e desafios</p>
+            <p class="entry-description">Envolvimento societal no resgate de um "passado utilizável". O caso do laboratório de história sobre mobilidade ciclável da cidade de Lisboa.</p>
+            <p class="entry-detail">Laboratório Associado IN2PAST (Lisboa, Portugal)</p>
           </div>
         </div>
 
@@ -296,15 +367,21 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
           </div>
         </div>
         <div class="cv-entry">
-          <span class="cv-entry-period">AVANÇADO</span>
+          <span class="cv-entry-period">C1</span>
           <div class="cv-entry-content">
             <p class="entry-institution">Inglês</p>
           </div>
         </div>
         <div class="cv-entry">
-          <span class="cv-entry-period">LEITURA</span>
+          <span class="cv-entry-period">A2/B1</span>
           <div class="cv-entry-content">
-            <p class="entry-institution">Espanhol · Francês</p>
+            <p class="entry-institution">Francês</p>
+          </div>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-entry-period">A1/A2</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">Macedónio</p>
           </div>
         </div>
         <div class="cv-section-end" aria-hidden="true">

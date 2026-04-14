@@ -70,7 +70,7 @@ description: "Diego Cavalcanti — Investigador na intersecção da história so
         <span class="id-key">ORCID</span>
         <span class="id-val">
           <a href="{{ site.author.orcid }}" target="_blank" rel="noopener">
-            0000-0000-0000-0000
+            0000-0002-3287-9465
           </a>
         </span>
       </div>
@@ -95,24 +95,22 @@ description: "Diego Cavalcanti — Investigador na intersecção da história so
         </p>
         <p>
           É detentor de um grau de Mestre em História Social pela Universidade Federal do Ceará
-          (UFC, Brasil), obtido com bolsa CAPES e formalmente reconhecido pela Universidade NOVA de
-          Lisboa com a classificação máxima. A sua investigação de mestrado centrou-se na escravatura
-          e nas relações sociais no Ceará colonial, tendo contribuído para políticas públicas e justiça
-          histórica através da co-autoria de um laudo histórico pericial utilizado em processos judiciais
-          relacionados com a demarcação de territórios quilombolas no Brasil.
+          (UFC, Brasil, 2021), formalmente reconhecido pela Universidade Nova de Lisboa com a
+          classificação de 20 valores. A sua dissertação de mestrado, intitulada "Trajetórias e
+          experiências de escravizados no Baixo Jaguaribe-Aracati/Ceará no século XVIII", centrou-se
+          na escravatura e nas relações sociais no Ceará colonial.
         </p>
         <p>
-          Entre 2022 e 2024, participou no projecto Hi-BicLab — Laboratório de História para
-          Mobilidades Urbanas Sustentáveis (financiado pela FCT, IP: M. Luísa Sousa), contribuindo
-          para a investigação interdisciplinar que resultou na publicação <em>Cycling Cities: The
-          Lisbon Experience</em>, parte da série internacional <em>Cycling Cities</em> editada pela
-          Foundation for the History of Technology (Eindhoven University of Technology).
+          Entre 2022 e 2023, participou no projecto Hi-BicLab — Laboratório de História para
+          Mobilidades Urbanas Sustentáveis (EXPL/FER-HFC/0847/2021, financiado pela FCT, PI: M. Luísa
+          Sousa), contribuindo para a investigação interdisciplinar que resultou na publicação
+          <em>Cycling Cities: The Lisbon Experience</em> (2025), parte da série internacional
+          <em>Cycling Cities</em> editada pela Foundation for the History of Technology.
         </p>
         <p>
-          Desempenha actualmente as funções de Assistant Book Review Editor na <em>Technology and
-          Culture</em>, a principal revista em história da tecnologia, publicada pela Society for the
-          History of Technology (SHOT), onde contribui para os fluxos editoriais e actividades de
-          disseminação académica da revista.
+          Desde Outubro de 2025, desempenha as funções de Assistant Book Review Editor na Society for
+          the History of Technology (SHOT), junto da Johns Hopkins University Press, onde contribui
+          para os fluxos editoriais e actividades de disseminação académica.
         </p>
         <p>
           A sua trajectória académica foi moldada por ambientes de investigação colaborativos e
@@ -146,24 +144,31 @@ description: "Diego Cavalcanti — Investigador na intersecção da história so
     <div class="education-timeline" role="list">
 
       <div class="timeline-item reveal" role="listitem">
-        <p class="timeline-date">2022 – PRESENTE</p>
+        <p class="timeline-date">2023 – PRESENTE</p>
         <h3 class="timeline-title">Doutoramento em História, Filosofia e Património da Ciência e Tecnologia</h3>
-        <p class="timeline-institution">NOVA School of Science and Technology (NOVA FCT) · Lisboa, Portugal</p>
-        <p class="timeline-institution">Bolsa FCT · Investigador CIUHCT</p>
+        <p class="timeline-institution">NOVA School of Science and Technology (NOVA FCT) · CIUHCT · Lisboa, Portugal</p>
+        <p class="timeline-institution">Bolsa FCT (2023.01509.BD)</p>
       </div>
 
       <div class="timeline-item reveal" role="listitem">
-        <p class="timeline-date">2019 – 2021</p>
+        <p class="timeline-date">2024 – 2025</p>
+        <h3 class="timeline-title">Pós-Graduação em Prescrição de Treinos e Exercícios</h3>
+        <p class="timeline-institution">Centro Universitário Anhanguera Pitágoras / Unopar de Niterói · Brasil</p>
+        <p class="timeline-institution">Classificação: 9.8/10</p>
+      </div>
+
+      <div class="timeline-item reveal" role="listitem">
+        <p class="timeline-date">2022</p>
+        <h3 class="timeline-title">Mestrado em História (reconhecimento)</h3>
+        <p class="timeline-institution">Universidade Nova de Lisboa · Lisboa, Portugal</p>
+        <p class="timeline-institution">Classificação: 20 valores</p>
+      </div>
+
+      <div class="timeline-item reveal" role="listitem">
+        <p class="timeline-date">2018 – 2021</p>
         <h3 class="timeline-title">Mestrado em História Social</h3>
         <p class="timeline-institution">Universidade Federal do Ceará (UFC) · Fortaleza, Brasil</p>
-        <p class="timeline-institution">Bolsa CAPES · Reconhecido pela NOVA University Lisbon com classificação máxima</p>
-      </div>
-
-      <div class="timeline-item reveal" role="listitem">
-        <p class="timeline-date">2014 – 2018</p>
-        <h3 class="timeline-title">Licenciatura em História</h3>
-        <p class="timeline-institution">Universidade Federal do Ceará (UFC) · Fortaleza, Brasil</p>
-        <p class="timeline-institution">COMTER · Bolseiro PET–História</p>
+        <p class="timeline-institution">Classificação: 9,73/10</p>
       </div>
 
     </div>
