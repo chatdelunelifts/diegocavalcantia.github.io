@@ -232,21 +232,11 @@
     transition: border-color var(--trans-mid), background var(--trans-mid);
 
     svg {
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       color: rgba(232, 232, 232, 0.4);
-      stroke: currentColor;
       transition: color var(--trans-mid);
-
-      // Elementos com fill="currentColor" (ex: GitHub, LinkedIn)
-      [fill="currentColor"] {
-        fill: currentColor;
-      }
-
-      // Elementos com fill="none" mantêm-se vazios
-      [fill="none"] {
-        fill: none;
-      }
+      shape-rendering: geometricPrecision;
     }
 
     &:hover, &:focus {

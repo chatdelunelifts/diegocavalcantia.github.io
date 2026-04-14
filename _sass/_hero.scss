@@ -118,19 +118,11 @@
     position: relative;
 
     svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       color: var(--text-meta);
-      stroke: currentColor;
       transition: color var(--trans-mid);
-
-      [fill="currentColor"] {
-        fill: currentColor;
-      }
-
-      [fill="none"] {
-        fill: none;
-      }
+      shape-rendering: geometricPrecision;
     }
 
     &:hover, &:focus-visible {

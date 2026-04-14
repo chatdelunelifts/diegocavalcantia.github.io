@@ -21,33 +21,36 @@
     <ul class="nav-list" role="list">
 
       {% assign nav_items = "" | split: "" %}
-      {% assign nav_items = nav_items | push: "home,/,01" %}
-      {% assign nav_items = nav_items | push: "about,/sobre/,02" %}
-      {% assign nav_items = nav_items | push: "books,/livros/,03" %}
-      {% assign nav_items = nav_items | push: "articles,/artigos/,04" %}
-      {% assign nav_items = nav_items | push: "chapters,/capitulos/,05" %}
-      {% assign nav_items = nav_items | push: "projects,/projectos/,06" %}
-      {% assign nav_items = nav_items | push: "teaching,/ensino/,07" %}
-      {% assign nav_items = nav_items | push: "cv,/cv/,08" %}
-      {% assign nav_items = nav_items | push: "contact,/contacto/,09" %}
+      {% assign nav_items = nav_items | push: "home,/,01,Início,Home" %}
+      {% assign nav_items = nav_items | push: "about,/sobre/,02,Sobre,About" %}
+      {% assign nav_items = nav_items | push: "books,/livros/,03,Livros,Books" %}
+      {% assign nav_items = nav_items | push: "articles,/artigos/,04,Artigos,Articles" %}
+      {% assign nav_items = nav_items | push: "chapters,/capitulos/,05,Capítulos,Chapters" %}
+      {% assign nav_items = nav_items | push: "projects,/projectos/,06,Projectos,Projects" %}
+      {% assign nav_items = nav_items | push: "teaching,/ensino/,07,Ensino,Teaching" %}
+      {% assign nav_items = nav_items | push: "cv,/cv/,08,CV,CV" %}
+      {% assign nav_items = nav_items | push: "contact,/contacto/,09,Contacto,Contact" %}
 
       {% for item in nav_items %}
         {% assign parts = item | split: "," %}
         {% assign key = parts[0] %}
         {% assign path = parts[1] %}
         {% assign num = parts[2] %}
+        {% assign label_pt = parts[3] %}
+        {% assign label_en = parts[4] %}
         {% assign is_active = false %}
         {% if current_url == path or current_url contains path and path != "/" %}
           {% assign is_active = true %}
         {% elsif current_url == "/" and path == "/" %}
           {% assign is_active = true %}
         {% endif %}
+        {% assign label = t.nav[key] | default: label_pt %}
 
         <li class="nav-item{% if is_active %} active{% endif %}" data-nav="{{ key }}">
           <a href="{{ path | relative_url }}"
              {% if is_active %}aria-current="page"{% endif %}>
             <span class="nav-num">{{ num }}</span>
-            <span data-i18n="nav.{{ key }}">{{ t.nav[key] }}</span>
+            <span data-i18n="nav.{{ key }}">{{ label }}</span>
           </a>
         </li>
       {% endfor %}
