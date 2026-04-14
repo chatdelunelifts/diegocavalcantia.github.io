@@ -234,9 +234,19 @@
     svg {
       width: 14px;
       height: 14px;
-      fill: none;
-      stroke: rgba(232, 232, 232, 0.4);
-      transition: stroke var(--trans-mid);
+      color: rgba(232, 232, 232, 0.4);
+      stroke: currentColor;
+      transition: color var(--trans-mid);
+
+      // Elementos com fill="currentColor" (ex: GitHub, LinkedIn)
+      [fill="currentColor"] {
+        fill: currentColor;
+      }
+
+      // Elementos com fill="none" mantêm-se vazios
+      [fill="none"] {
+        fill: none;
+      }
     }
 
     &:hover, &:focus {
@@ -244,7 +254,7 @@
       background: rgba(183, 65, 14, 0.1);
 
       svg {
-        stroke: var(--rust);
+        color: var(--rust);
       }
     }
 

@@ -13,7 +13,7 @@
       <span class="monogram-dc" aria-hidden="true">DC</span>
     </a>
     <span class="monogram-name">Diego Cavalcanti</span>
-    <span class="monogram-role">Doutorando · NOVA FCT</span>
+    <span class="monogram-role" data-i18n="monogram.role">Doutorando · NOVA FCT</span>
   </div>
 
   <!-- Navegação -->
@@ -47,7 +47,7 @@
           <a href="{{ path | relative_url }}"
              {% if is_active %}aria-current="page"{% endif %}>
             <span class="nav-num">{{ num }}</span>
-            {{ t.nav[key] }}
+            <span data-i18n="nav.{{ key }}">{{ t.nav[key] }}</span>
           </a>
         </li>
       {% endfor %}
@@ -57,14 +57,15 @@
 
   <!-- Alternador PT/EN -->
   <div class="lang-toggle" role="group" aria-label="Selecção de idioma">
-    <a href="{{ page.url }}" class="lang-btn{% if lang == 'pt' %} active{% endif %}"
+    <a href="#" class="lang-btn{% if lang == 'pt' %} active{% endif %}"
        lang="pt" aria-label="Português"
+       data-lang-switch="pt"
        {% if lang == 'pt' %}aria-current="true"{% endif %}>PT</a>
     <span class="lang-sep" aria-hidden="true">·</span>
-    <a href="{{ page.url }}" class="lang-btn{% if lang == 'en' %} active{% endif %}"
+    <a href="#" class="lang-btn{% if lang == 'en' %} active{% endif %}"
        lang="en" aria-label="English"
-       {% if lang == 'en' %}aria-current="true"{% endif %}
-       data-lang-switch="en">EN</a>
+       data-lang-switch="en"
+       {% if lang == 'en' %}aria-current="true"{% endif %}>EN</a>
   </div>
 
   <!-- Contactos na base -->

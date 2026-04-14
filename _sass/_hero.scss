@@ -120,9 +120,17 @@
     svg {
       width: 16px;
       height: 16px;
-      fill: none;
-      stroke: var(--text-meta);
-      transition: stroke var(--trans-mid);
+      color: var(--text-meta);
+      stroke: currentColor;
+      transition: color var(--trans-mid);
+
+      [fill="currentColor"] {
+        fill: currentColor;
+      }
+
+      [fill="none"] {
+        fill: none;
+      }
     }
 
     &:hover, &:focus-visible {
@@ -130,7 +138,7 @@
       transform: translateY(-3px);
 
       svg {
-        stroke: var(--rust);
+        color: var(--rust);
       }
 
       .icon-tooltip {
