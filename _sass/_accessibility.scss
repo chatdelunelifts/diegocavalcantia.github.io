@@ -14,11 +14,17 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 8px 16px;
-  z-index: 10000;
+  z-index: $z-skip-link;
   transition: top var(--trans-fast);
 
   &:focus {
     top: 8px;
+  }
+
+  &:focus-visible {
+    top: 8px;
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
   }
 }
 
@@ -46,6 +52,73 @@
   .pub-card,
   .book-entry {
     border-color: #888888;
+  }
+
+  // Sidebar elements — ensure legibility in high contrast
+  .nav-item a {
+    color: rgba(232, 232, 232, 0.9);
+  }
+
+  .nav-item a .nav-num {
+    color: rgba(232, 232, 232, 0.7);
+  }
+
+  .monogram-name {
+    color: rgba(232, 232, 232, 0.9);
+  }
+
+  .monogram-role {
+    color: rgba(232, 232, 232, 0.8);
+  }
+
+  .lang-btn {
+    color: rgba(232, 232, 232, 0.8);
+  }
+
+  .lang-sep {
+    color: rgba(232, 232, 232, 0.7);
+  }
+
+  .section-num,
+  .section-num-display {
+    -webkit-text-stroke-color: var(--rust);
+    opacity: 0.8;
+  }
+
+  // Cards and filters
+  .filter-btn {
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .card-description {
+    color: var(--text-meta);
+  }
+
+  .card-footer .card-meta span {
+    color: var(--text-meta);
+  }
+
+  // Contact icons
+  .contact-icon svg {
+    color: rgba(232, 232, 232, 0.8);
+  }
+
+  // Status badges
+  .status-badge {
+    border-width: 2px;
+  }
+
+  // Footer
+  .footer-copy,
+  .cursor-toggle {
+    color: var(--text-meta);
+  }
+
+  // Research tags
+  .research-tag {
+    color: var(--text);
+    border-color: var(--border);
   }
 }
 

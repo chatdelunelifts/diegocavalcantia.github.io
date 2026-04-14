@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // Threshold consistente: 10% visível + rootMargin de -10% do fundo
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -23,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    threshold: 0,
-    rootMargin: '0px 0px -15% 0px' // 85% do viewport
+    threshold: 0.1,
+    rootMargin: '0px 0px -10% 0px'
   });
 
   // Blocos principais
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         strokeObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.2 });
 
   document.querySelectorAll('.section-num, .section-num-display').forEach(el => {
     // Só aplicar se for outline

@@ -50,12 +50,38 @@ $color-patina:       #6B7F1A;   // verde-patina — acento terciário, muito rar
   --font-display: 'Archivo Narrow', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
 
+  // Espaçamento — escala consistente (base 8px)
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
   // Transições
   --trans-fast: 150ms ease-out;
   --trans-mid:  280ms ease-out;
   --trans-slow: 320ms cubic-bezier(.65, 0, .35, 1);
   --trans-very-slow: 500ms ease-out;
 }
+
+// ─── Z-INDEX SCALE ──────────────────────────────────────────────────────────
+// Documentar todos os z-index para evitar conflitos
+// z-1:     Noise overlay (sidebar::before)
+// z-2:     Sidebar content (monogram, nav, contacts, lang)
+// z-3:     Scroll progress
+// z-50:    Nav overlay (mobile)
+// z-100:   Sidebar container
+// z-200:   Hamburger button (mobile)
+// z-10000: Skip link (above everything)
+$z-sidebar-noise:   1;
+$z-sidebar-content: 2;
+$z-scroll-progress: 3;
+$z-nav-overlay:     50;
+$z-sidebar:         100;
+$z-hamburger:       200;
+$z-skip-link:       10000;
 
 // ─── TIPOGRAFIA — ESCALAS ────────────────────────────────────────────────────
 $type-hero:    clamp(80px, 14vw, 180px);
@@ -72,6 +98,11 @@ $bp-tablet:  768px;
 $bp-desktop: 1024px;
 $bp-wide:    1440px;
 
+// NOTA: os nomes referem-se ao ALVO do layout, não ao breakpoint exacto:
+// mobile  → ecrãs ATÉ tablet (< 768px)
+// tablet  → ecrãs ATÉ desktop (< 1024px)
+// desktop → ecrãs desktop e acima (>= 1024px)
+// wide    → ecrãs largos (>= 1440px)
 @mixin mobile  { @media (max-width: #{$bp-tablet - 1px}) { @content; } }
 @mixin tablet  { @media (max-width: #{$bp-desktop - 1px}) { @content; } }
 @mixin desktop { @media (min-width: #{$bp-desktop}) { @content; } }

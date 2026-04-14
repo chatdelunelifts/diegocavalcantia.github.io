@@ -63,7 +63,7 @@ layout: default
 </section>
 
 <!-- ARQUIVO · ACTIVIDADE RECENTE -->
-<section class="archive-section" aria-labelledby="archive-title">
+<section class="archive-section" role="region" aria-labelledby="archive-title">
 
   <div class="archive-header">
     <h2 id="archive-title" class="archive-title">
@@ -88,7 +88,7 @@ layout: default
 
       {% if item.cover %}
       <div class="card-cover">
-        <img src="{{ item.cover | relative_url }}" alt="Capa de {{ item.title }}" loading="lazy">
+        <img src="{{ item.cover | relative_url }}" alt="{% if item.title %}Capa de {{ item.title }}{% else %}Capa de publicação{% endif %}" loading="lazy">
       </div>
       {% endif %}
 
@@ -133,10 +133,11 @@ layout: default
   </div>
 
   <!-- Contribution Graph -->
-  <div class="contribution-graph reveal" aria-label="Calendário de publicações">
+  <div class="contribution-graph reveal" role="region" aria-label="Calendário de publicações">
     <p class="graph-label">ACTIVIDADE · 2020–{{ 'now' | date: '%Y' }}</p>
-    <div class="graph-grid" id="contribution-graph" aria-hidden="true">
-      <!-- Gerado via JavaScript: assets/js/contribution-graph.js -->
+    <div class="graph-grid" id="contribution-graph" aria-hidden="true"
+         data-publications='[{% assign all_items = site.books | concat: site.articles | concat: site.chapters | concat: site.projects %}{% for item in all_items %}{"year":{{ item.year | default: item.year_start | default: 2020 }},"type":"{{ item.pub_type | default: 'project' }}"}{% unless forloop.last %},{% endunless %}{% endfor %}]'>
+      <!-- Gerado via JavaScript com dados reais das publicações -->
     </div>
   </div>
 

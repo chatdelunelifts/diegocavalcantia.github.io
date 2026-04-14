@@ -8,7 +8,7 @@
   width: var(--sidebar-width);
   height: 100vh;
   background: var(--steel-blue);
-  z-index: 100;
+  z-index: $z-sidebar;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -31,6 +31,7 @@
     );
     background-size: 100% 200%;
     animation: sidebar-border-flow 8s linear infinite;
+    will-change: background-position;
   }
 
   // Ruído — chapa metálica patinada
@@ -42,7 +43,7 @@
     opacity: 0.04;
     mix-blend-mode: overlay;
     pointer-events: none;
-    z-index: 1;
+    z-index: $z-sidebar-noise;
   }
 
   @include tablet {
@@ -61,7 +62,7 @@
 .sidebar-monogram {
   padding: 32px 28px 16px;
   position: relative;
-  z-index: 2;
+  z-index: $z-sidebar-content;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
   .monogram-dc {
@@ -80,7 +81,7 @@
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(232, 232, 232, 0.5);
+    color: rgba(232, 232, 232, 0.72);
     display: block;
     margin-top: 4px;
   }
@@ -90,7 +91,7 @@
     font-size: 9px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(232, 232, 232, 0.3);
+    color: rgba(232, 232, 232, 0.6);
     display: block;
     margin-top: 2px;
   }
@@ -101,7 +102,7 @@
   flex: 1;
   padding: 24px 0;
   position: relative;
-  z-index: 2;
+  z-index: $z-sidebar-content;
   overflow-y: auto;
 }
 
@@ -133,7 +134,7 @@
     font-weight: 400;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: rgba(232, 232, 232, 0.55);
+    color: rgba(232, 232, 232, 0.75);
     transition:
       color var(--trans-mid),
       transform var(--trans-mid);
@@ -160,9 +161,14 @@
       }
     }
 
+    &:focus-visible {
+      outline: 2px solid var(--rust);
+      outline-offset: -2px;
+    }
+
     .nav-num {
       font-size: 9px;
-      color: rgba(232, 232, 232, 0.2);
+      color: rgba(232, 232, 232, 0.45);
       min-width: 20px;
     }
   }
@@ -182,7 +188,7 @@
   align-items: center;
   gap: 8px;
   position: relative;
-  z-index: 2;
+  z-index: $z-sidebar-content;
 
   .lang-btn {
     font-family: var(--font-mono);
@@ -193,7 +199,7 @@
     padding: 4px 8px;
     border: 1px solid transparent;
     transition: all var(--trans-mid);
-    color: rgba(232, 232, 232, 0.4);
+    color: rgba(232, 232, 232, 0.6);
 
     &.active {
       color: var(--text);
@@ -208,7 +214,7 @@
   .lang-sep {
     font-family: var(--font-mono);
     font-size: 10px;
-    color: rgba(232, 232, 232, 0.2);
+    color: rgba(232, 232, 232, 0.45);
   }
 }
 
@@ -220,7 +226,7 @@
   align-items: center;
   flex-wrap: wrap;
   position: relative;
-  z-index: 2;
+  z-index: $z-sidebar-content;
 
   .contact-icon {
     width: 32px;
@@ -234,7 +240,7 @@
     svg {
       width: 16px;
       height: 16px;
-      color: rgba(232, 232, 232, 0.4);
+      color: rgba(232, 232, 232, 0.6);
       transition: color var(--trans-mid);
       shape-rendering: geometricPrecision;
     }
@@ -263,7 +269,7 @@
   right: 1px; // não cobre a borda de ferrugem
   height: 3px;
   background: var(--border-inner);
-  z-index: 3;
+  z-index: $z-scroll-progress;
 
   .scroll-fill {
     height: 100%;
@@ -279,9 +285,9 @@
   position: fixed;
   top: 16px;
   left: 16px;
-  z-index: 200;
-  width: 44px;
-  height: 44px;
+  z-index: $z-hamburger;
+  width: 48px;
+  height: 48px;
   border: 1px solid var(--border);
   background: var(--bg);
   flex-direction: column;
@@ -320,7 +326,7 @@
   position: fixed;
   inset: 0;
   background: rgba(10, 10, 10, 0.85);
-  z-index: 99;
+  z-index: $z-nav-overlay;
   backdrop-filter: blur(2px);
 
   @include tablet {

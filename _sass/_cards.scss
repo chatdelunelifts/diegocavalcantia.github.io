@@ -245,6 +245,31 @@
   gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 32px;
+  position: relative;
+
+  // Em mobile, scroll horizontal com indicação visual
+  @include mobile {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+
+    // Sombra de affordance à direita quando há overflow
+    mask-image: linear-gradient(to right, black calc(100% - 32px), transparent);
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 32px), transparent);
+
+    // Remover mask quando scroll está no fim (via JS class)
+    &.scrolled-end {
+      mask-image: linear-gradient(to left, black calc(100% - 32px), transparent);
+      -webkit-mask-image: linear-gradient(to left, black calc(100% - 32px), transparent);
+    }
+
+    &.scrolled-middle {
+      mask-image: linear-gradient(to right, transparent, black 32px, black calc(100% - 32px), transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 32px, black calc(100% - 32px), transparent);
+    }
+  }
 
   .filter-btn {
     font-family: var(--font-mono);
@@ -266,6 +291,11 @@
       background: var(--rust);
       border-color: var(--rust);
       color: var(--bg);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--rust);
+      outline-offset: 2px;
     }
   }
 }

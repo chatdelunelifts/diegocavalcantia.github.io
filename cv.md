@@ -160,7 +160,7 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
           <div class="cv-entry-content">
             <p class="entry-institution">CIUHCT / NOVA School of Science and Technology (NOVA FCT)</p>
             <p class="entry-description">Doutoramento em História, Filosofia e Património da Ciência e Tecnologia</p>
-            <p class="entry-detail">Bolsa FCT (2023.01509.BD) · Lisboa, Portugal</p>
+            <p class="entry-detail">Orient.: Maria Luísa Sousa · Co-orient.: David Sousa Vale · Bolsa FCT (2023.01509.BD) · Lisboa, Portugal</p>
           </div>
         </div>
 
@@ -187,7 +187,16 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
           <div class="cv-entry-content">
             <p class="entry-institution">Universidade Federal do Ceará (UFC)</p>
             <p class="entry-description">Mestrado em História Social</p>
-            <p class="entry-detail">Classificação: 9,73/10 · Fortaleza, Brasil</p>
+            <p class="entry-detail">Orient.: Eurípedes Antônio Funes · Bolsa CAPES · Classificação: 9,73/10 · Fortaleza, Brasil</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2013–2018</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">Universidade Federal do Ceará (UFC)</p>
+            <p class="entry-description">Graduação em História</p>
+            <p class="entry-detail">Bolsa SESU · COMTER · PET–História · Fortaleza, Brasil</p>
           </div>
         </div>
 
@@ -309,6 +318,42 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
           </div>
         </div>
 
+        <div class="cv-entry">
+          <span class="cv-entry-period">2019</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">30º Simpósio Nacional de História — ANPUH</p>
+            <p class="entry-description">As brechas da permanência: negação do trabalho, negociações e conflitos na Villa do Aracaty no século XVIII</p>
+            <p class="entry-detail">Recife, Brasil</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2018</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">XVI Encontro Estadual de História do Ceará</p>
+            <p class="entry-description">O uso do "tempo livre" dos escravizados na Villa do Aracati (1750–1783)</p>
+            <p class="entry-detail">Ceará, Brasil</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2018</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">V Simpósio Pesquisa e Ensino de História da FAFIDAM</p>
+            <p class="entry-description">A História dos trabalhadores pobres no Ceará do século XVIII: perspectivas e desafios com a dimensão documental</p>
+            <p class="entry-detail">Ceará, Brasil</p>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <span class="cv-entry-period">2016</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">XII Seminário de Pesquisa do Departamento de História — UFC</p>
+            <p class="entry-description">Tempo, resistência e solidariedade: por uma história social dos sujeitos escravizados no Ceará (1780–1820)</p>
+            <p class="entry-detail">Fortaleza, Brasil</p>
+          </div>
+        </div>
+
         <div class="cv-section-end" aria-hidden="true">
           <span class="end-label">{{ t.meta.end_section }} / {{ t.cv.conference | upcase }}</span>
         </div>
@@ -376,6 +421,12 @@ description: "Curriculum Vitae de Diego Cavalcanti — Doutorando em História, 
           <span class="cv-entry-period">A2/B1</span>
           <div class="cv-entry-content">
             <p class="entry-institution">Francês</p>
+          </div>
+        </div>
+        <div class="cv-entry">
+          <span class="cv-entry-period">LEITURA</span>
+          <div class="cv-entry-content">
+            <p class="entry-institution">Espanhol</p>
           </div>
         </div>
         <div class="cv-entry">

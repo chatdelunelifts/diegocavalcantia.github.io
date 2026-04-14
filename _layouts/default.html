@@ -30,7 +30,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
 </head>
-<body class="custom-cursor" data-lang="{{ page.lang | default: site.lang | default: 'pt' }}">
+<body data-lang="{{ page.lang | default: site.lang | default: 'pt' }}">
 
   {% assign t = site.data.translations[page.lang | default: site.lang | default: 'pt'] %}
 
@@ -79,6 +79,23 @@
 
   <!-- No-JS fallback remove -->
   <script>document.documentElement.classList.remove('no-js');</script>
+
+  <!-- Skip link focus management -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var skipLink = document.querySelector('.skip-link');
+    if (skipLink) {
+      skipLink.addEventListener('click', function(e) {
+        var target = document.getElementById('main-content');
+        if (target) {
+          e.preventDefault();
+          target.focus({ preventScroll: false });
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  });
+  </script>
 
 </body>
 </html>

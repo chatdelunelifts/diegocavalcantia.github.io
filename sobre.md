@@ -168,7 +168,14 @@ description: "Diego Cavalcanti — Investigador na intersecção da história so
         <p class="timeline-date">2018 – 2021</p>
         <h3 class="timeline-title">Mestrado em História Social</h3>
         <p class="timeline-institution">Universidade Federal do Ceará (UFC) · Fortaleza, Brasil</p>
-        <p class="timeline-institution">Classificação: 9,73/10</p>
+        <p class="timeline-institution">Orientador: Eurípedes Antônio Funes · Bolsa CAPES · Classificação: 9,73/10</p>
+      </div>
+
+      <div class="timeline-item reveal" role="listitem">
+        <p class="timeline-date">2013 – 2018</p>
+        <h3 class="timeline-title">Graduação em História</h3>
+        <p class="timeline-institution">Universidade Federal do Ceará (UFC) · Fortaleza, Brasil</p>
+        <p class="timeline-institution">Bolsa SESU · COMTER · PET–História</p>
       </div>
 
     </div>

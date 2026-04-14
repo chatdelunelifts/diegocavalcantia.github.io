@@ -68,9 +68,11 @@
 // Imagens com clip-path reveal
 .img-reveal {
   clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
 
   &.revealed {
     animation: clip-reveal 600ms ease-out forwards;
+    will-change: auto;
   }
 }
 
@@ -78,6 +80,7 @@
 .reveal {
   opacity: 0;
   transform: translateY(16px);
+  will-change: opacity, transform;
   transition:
     opacity var(--trans-very-slow),
     transform var(--trans-very-slow);
@@ -85,6 +88,8 @@
   &.revealed {
     opacity: 1;
     transform: translateY(0);
+    // Remover will-change após animação para liberar GPU
+    will-change: auto;
   }
 }
 

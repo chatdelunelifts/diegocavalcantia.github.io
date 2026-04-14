@@ -6,6 +6,8 @@ year_start: 2023
 year_end: 2027
 status: ongoing
 pi: "Diego Cavalcanti"
+supervisor: "Maria Luísa de Castro Coelho de Oliveira e Sousa"
+co_supervisor: "David Sousa Vale"
 funding: "FCT — Fundação para a Ciência e a Tecnologia"
 grant_code: "2023.01509.BD"
 doi: "10.54499/2023.01509.BD"

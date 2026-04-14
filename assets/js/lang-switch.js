@@ -13,7 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function initLangSwitch() {
   const stored = localStorage.getItem('site-lang');
   const htmlLang = document.documentElement.lang || 'pt';
-  const currentLang = stored || htmlLang;
+  // Validar idioma — apenas pt ou en
+  const validLangs = ['pt', 'en'];
+  const currentLang = (stored && validLangs.includes(stored)) ? stored : htmlLang;
+
+  // Sincronizar localStorage com o idioma efectivo (previne divergência)
+  localStorage.setItem('site-lang', currentLang);
 
   // Aplicar idioma guardado
   if (currentLang !== htmlLang) {
@@ -21,14 +26,24 @@ function initLangSwitch() {
   }
   updateToggleUI(currentLang);
 
+  // Debounce para evitar cliques rápidos
+  let switching = false;
+
+  function switchLang(lang) {
+    if (switching || !validLangs.includes(lang)) return;
+    switching = true;
+    localStorage.setItem('site-lang', lang);
+    applyLanguage(lang);
+    updateToggleUI(lang);
+    // Debounce de 300ms
+    setTimeout(() => { switching = false; }, 300);
+  }
+
   // Clique nos botões PT / EN
   document.querySelectorAll('[data-lang-switch]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const lang = btn.dataset.langSwitch;
-      localStorage.setItem('site-lang', lang);
-      applyLanguage(lang);
-      updateToggleUI(lang);
+      switchLang(btn.dataset.langSwitch);
     });
   });
 
@@ -38,9 +53,7 @@ function initLangSwitch() {
       btn.dataset.langSwitch = 'pt';
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        localStorage.setItem('site-lang', 'pt');
-        applyLanguage('pt');
-        updateToggleUI('pt');
+        switchLang('pt');
       });
     }
   });
@@ -102,9 +115,20 @@ const TRANSLATIONS = {
     'meta.verified': 'VERIFICADO',
     'meta.download_cv': 'Descarregar CV',
     'meta.filter_all': 'TODOS',
+    'meta.filter_books': 'LIVROS',
+    'meta.filter_articles': 'ARTIGOS',
+    'meta.filter_chapters': 'CAPÍTULOS',
+    'meta.filter_projects': 'PROJECTOS',
     'meta.abstract': 'Resumo',
     'meta.collapse': 'Recolher',
     'meta.expand': 'Expandir',
+    'meta.entries': 'ENTRADAS',
+    'meta.ongoing': 'EM CURSO',
+    'meta.completed': 'CONCLUÍDO',
+    'meta.skip_link': 'Saltar para conteúdo',
+    'meta.open_nav': 'Abrir navegação',
+    'meta.close_nav': 'Fechar navegação',
+    'meta.pub_cover': 'Capa de publicação',
     'hero.eyebrow': 'CIUHCT · NOVA FCT · FCT',
     'hero.subtitle.1': 'HISTORIADOR',
     'hero.subtitle.2': 'URBANISMO',
@@ -130,9 +154,20 @@ const TRANSLATIONS = {
     'meta.verified': 'VERIFIED',
     'meta.download_cv': 'Download CV',
     'meta.filter_all': 'ALL',
+    'meta.filter_books': 'BOOKS',
+    'meta.filter_articles': 'ARTICLES',
+    'meta.filter_chapters': 'CHAPTERS',
+    'meta.filter_projects': 'PROJECTS',
     'meta.abstract': 'Abstract',
     'meta.collapse': 'Collapse',
     'meta.expand': 'Expand',
+    'meta.entries': 'ENTRIES',
+    'meta.ongoing': 'ONGOING',
+    'meta.completed': 'COMPLETED',
+    'meta.skip_link': 'Skip to content',
+    'meta.open_nav': 'Open navigation',
+    'meta.close_nav': 'Close navigation',
+    'meta.pub_cover': 'Publication cover',
     'hero.eyebrow': 'CIUHCT · NOVA FCT · FCT',
     'hero.subtitle.1': 'HISTORIAN',
     'hero.subtitle.2': 'URBAN PLANNING',

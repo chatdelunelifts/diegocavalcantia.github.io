@@ -100,11 +100,14 @@ function initMobileNav() {
     }
   });
 
-  // Fechar ao clicar num link (mobile)
+  // Fechar ao clicar num link interno (mobile) — não fechar para links externos
   sidebar.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth < 1024) {
-        closeNav();
+        const isExternal = link.hasAttribute('target') && link.getAttribute('target') === '_blank';
+        if (!isExternal) {
+          closeNav();
+        }
       }
     });
   });

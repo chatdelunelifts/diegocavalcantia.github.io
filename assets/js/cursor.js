@@ -7,8 +7,18 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Não activar em touch/mobile
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  // Não activar em touch/mobile — verificar múltiplos sinais
+  const isTouch = 'ontouchstart' in window
+    || navigator.maxTouchPoints > 0
+    || window.matchMedia('(pointer: coarse)').matches;
+
+  if (isTouch) {
+    document.body.classList.remove('custom-cursor');
+    return;
+  }
+
+  // Também respeitar prefers-reduced-motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.body.classList.remove('custom-cursor');
     return;
   }
@@ -23,8 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseX = 0, mouseY = 0;
   let rafId = null;
 
-  // Estado inicial
-  if (!cursorEnabled) {
+  // Estado inicial — classe adicionada via JS, não via HTML
+  if (cursorEnabled) {
+    document.body.classList.add('custom-cursor');
+  } else {
     document.body.classList.remove('custom-cursor');
     cursorEl.style.opacity = '0';
     if (cursorImg) cursorImg.style.opacity = '0';

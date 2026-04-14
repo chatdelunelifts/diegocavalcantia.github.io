@@ -6,6 +6,14 @@
 
 'use strict';
 
+// ─── CONSTANTES ──────────────────────────────────────────────────────────────
+const ANIMATION_STAGGER_MS = 80;
+const PAGE_EXIT_DELAY_MS = 150;
+const SCROLL_AFFORDANCE_THRESHOLD = 8;
+const CONTRIBUTION_WEEKS = 52;
+const CONTRIBUTION_DAYS = 7;
+const STROKE_STAGGER_MS = 30;
+
 // ─── INICIALIZAÇÃO ────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -30,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Scroll progress na sidebar
   initScrollProgress();
 
+  // Scroll affordance nos filtros mobile
+  initFilterScrollAffordance();
+
 });
 
 // ─── EDIFÍCIO SVG — STROKE DASHARRAY ANIMATION ───────────────────────────────
@@ -47,7 +58,10 @@ function initBuildingAnimation() {
   }
 
   const elements = svg.querySelectorAll('path, line, rect, polyline, polygon, circle');
-  let delay = 0;
+
+  // Loading state — indicar que animação está a preparar
+  svg.setAttribute('aria-busy', 'true');
+  svg.classList.add('is-loading');
 
   // Ordenar de baixo para cima (por posição Y aproximada)
   const sorted = Array.from(elements).sort((a, b) => {
@@ -60,7 +74,7 @@ function initBuildingAnimation() {
     const length = el.getTotalLength ? el.getTotalLength() : 200;
     el.style.strokeDasharray = length;
     el.style.strokeDashoffset = length;
-    el.style.transition = `stroke-dashoffset 1.8s ease-out ${i * 30}ms`;
+    el.style.transition = `stroke-dashoffset 1.8s ease-out ${i * STROKE_STAGGER_MS}ms`;
   });
 
   // Trigger após breve delay
@@ -69,6 +83,8 @@ function initBuildingAnimation() {
       sorted.forEach(el => {
         el.style.strokeDashoffset = '0';
       });
+      svg.classList.remove('is-loading');
+      svg.setAttribute('aria-busy', 'false');
       svg.classList.add('is-drawn');
     }, 300);
   });
@@ -159,35 +175,37 @@ function initContributionGraph() {
 }
 
 function generateActivityData() {
-  // Actividade académica real aproximada
+  // Usar dados reais das publicações injectados via data-attribute no template
+  const container = document.getElementById('contribution-graph');
   const data = {};
-  const activities = [
-    // Hi-BicLab — 2022-2024
-    { start: '2022-03-01', end: '2024-06-30', intensity: 2 },
-    // Cycling Cities publicação — 2024
-    { start: '2024-01-01', end: '2024-12-31', intensity: 3 },
-    // Tese de doutoramento
-    { start: '2022-09-01', end: '2026-04-01', intensity: 1 },
-    // Technology and Culture — editorial
-    { start: '2023-06-01', end: '2026-04-01', intensity: 2 },
-  ];
 
-  activities.forEach(({ start, end, intensity }) => {
-    const s = new Date(start);
-    const e = new Date(end);
-    for (let d = new Date(s); d <= e; d.setDate(d.getDate() + 7)) {
-      // Actividade esparsa — não todos os dias
-      if (Math.random() > 0.6) {
+  try {
+    const pubs = JSON.parse(container.dataset.publications || '[]');
+    const typeIntensity = { book: 4, chapter: 3, article: 3, project: 2 };
+
+    pubs.forEach(pub => {
+      const year = pub.year;
+      const intensity = typeIntensity[pub.type] || 1;
+
+      // Distribuir actividade ao longo do ano da publicação
+      // Meses de pico: submissão (~3 meses antes), publicação
+      const months = [0, 3, 6, 9]; // Q1-Q4 spread
+      months.forEach(m => {
+        const d = new Date(year, m, 15);
         const dateStr = d.toISOString().split('T')[0];
         data[dateStr] = Math.max(data[dateStr] || 0, intensity);
-      }
-    }
-  });
+      });
 
-  // Picos específicos (conferências, publicações)
-  ['2024-09-15', '2024-10-02', '2023-11-20', '2023-04-10'].forEach(d => {
-    data[d] = 4;
-  });
+      // Meses adjacentes com menor intensidade
+      for (let m = 0; m < 12; m += 2) {
+        const d = new Date(year, m, 1);
+        const dateStr = d.toISOString().split('T')[0];
+        data[dateStr] = Math.max(data[dateStr] || 0, Math.max(1, intensity - 1));
+      }
+    });
+  } catch (e) {
+    // Fallback silencioso — graph vazio
+  }
 
   return data;
 }
@@ -199,25 +217,54 @@ function initPubFilters() {
 
   if (!filterBtns.length) return;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
+  function applyFilter(btn) {
+    const filter = btn.dataset.filter;
 
-      // Estado activo
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
+    // Estado activo
+    filterBtns.forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
 
-      // Filtrar entradas
-      pubEntries.forEach(entry => {
-        if (filter === 'all' || entry.dataset.type === filter) {
-          entry.style.display = '';
-          entry.removeAttribute('aria-hidden');
-        } else {
-          entry.style.display = 'none';
-          entry.setAttribute('aria-hidden', 'true');
-        }
-      });
+    // Filtrar entradas
+    pubEntries.forEach(entry => {
+      if (filter === 'all' || entry.dataset.type === filter) {
+        entry.style.display = '';
+        entry.removeAttribute('aria-hidden');
+      } else {
+        entry.style.display = 'none';
+        entry.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  filterBtns.forEach((btn, index) => {
+    // Garantir que buttons são focáveis e têm role
+    if (!btn.hasAttribute('role')) btn.setAttribute('role', 'button');
+    if (!btn.hasAttribute('tabindex')) btn.setAttribute('tabindex', '0');
+    if (!btn.hasAttribute('aria-pressed')) btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
+
+    btn.addEventListener('click', () => applyFilter(btn));
+
+    // Suporte de teclado: Enter e Space activam o filtro
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        applyFilter(btn);
+      }
+      // Setas esquerda/direita para navegar entre filtros
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = filterBtns[(index + 1) % filterBtns.length];
+        next.focus();
+      }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = filterBtns[(index - 1 + filterBtns.length) % filterBtns.length];
+        prev.focus();
+      }
     });
   });
 }
@@ -232,15 +279,24 @@ function initAbstractToggle() {
 
     if (!abstract) return;
 
-    toggle.addEventListener('click', () => {
+    function toggleAbstract() {
       const isOpen = abstract.classList.contains('is-open');
 
       abstract.classList.toggle('is-open', !isOpen);
       toggle.classList.toggle('is-open', !isOpen);
 
-      const label = toggle.dataset;
       toggle.setAttribute('aria-expanded', !isOpen);
       abstract.setAttribute('aria-hidden', isOpen);
+    }
+
+    toggle.addEventListener('click', toggleAbstract);
+
+    // Suporte de teclado
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleAbstract();
+      }
     });
   });
 }
@@ -261,9 +317,11 @@ function initPageTransition() {
       e.preventDefault();
       document.body.classList.add('page-exiting');
 
+      // Navegar imediatamente se reduced-motion, senão aguardar animação
+      const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : PAGE_EXIT_DELAY_MS;
       setTimeout(() => {
         window.location.href = destination;
-      }, 150);
+      }, delay);
     });
   });
 }
@@ -279,4 +337,28 @@ function initScrollProgress() {
     const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     fill.style.width = `${Math.min(100, progress)}%`;
   }, { passive: true });
+}
+
+// ─── SCROLL AFFORDANCE NOS FILTROS (mobile) ─────────────────────────────────
+function initFilterScrollAffordance() {
+  const filters = document.querySelector('.pub-filters');
+  if (!filters) return;
+
+  function updateScrollState() {
+    const { scrollLeft, scrollWidth, clientWidth } = filters;
+    const scrollEnd = scrollWidth - clientWidth;
+    const threshold = SCROLL_AFFORDANCE_THRESHOLD;
+
+    filters.classList.remove('scrolled-end', 'scrolled-middle');
+
+    if (scrollLeft > threshold && scrollLeft < scrollEnd - threshold) {
+      filters.classList.add('scrolled-middle');
+    } else if (scrollLeft >= scrollEnd - threshold) {
+      filters.classList.add('scrolled-end');
+    }
+  }
+
+  filters.addEventListener('scroll', updateScrollState, { passive: true });
+  // Verificar estado inicial após layout
+  requestAnimationFrame(updateScrollState);
 }
